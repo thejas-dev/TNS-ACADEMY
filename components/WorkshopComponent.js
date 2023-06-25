@@ -38,7 +38,7 @@ export default function WorkshopComponent() {
 				registeredParticipants:newRegisteredParticipants
 			})
 			setCurrentWorkshop(data.obj);
-			// console.log(data)
+			
 			let newRegisteredWorkshops = [currentWorkshop._id,...currentUser.registeredWorkshops];
 			const data2 = await axios.post(`${updateRegisteredWorkshops}/${currentUser._id}`,{
 				registeredWorkshops:newRegisteredWorkshops,
@@ -46,18 +46,18 @@ export default function WorkshopComponent() {
 				currentWorkshop
 			})
 			setCurrentUser(data2.data.obj);
-			// console.log(data2);
+			
 			showSuccesfullyRegisteredMessage();
 		}else if(!currentWorkshop || !currentUser){
 			router.push('/')
 		}
 	}
 
-	// console.log(currentUser,currentWorkshop)
+	
 
 	useEffect(()=>{
 		if(currentWorkshop && currentUser){
-			if(!currentUser.registeredWorkshops.includes(currentWorkshop._id)){
+			if(!currentUser?.registeredWorkshops?.includes(currentWorkshop?._id)){
 				setJoined(false);
 			}
 		}
@@ -81,13 +81,13 @@ export default function WorkshopComponent() {
 
 	const checkTime = () => {
 		const date1 = new Date();
-		const temp = currentWorkshop?.startsAt?.split('(')[0].split(' ')[0].split('-').reverse();
+		const temp = currentWorkshop?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
 		temp[0] = '20'+temp[0];
 		const date2 = new Date(temp.join('-'))
-		// console.log(timediff(date1,date2));
+		
 
 		var diff = new DateDiff(date2, date1);
-		// console.log(diff.minutes())
+		
 		if(diff.minutes() < 5 ){
 			setRemainingTime('Closed')
 		}else{
@@ -123,7 +123,7 @@ export default function WorkshopComponent() {
 			 shadow-xl shadow-purple-500/70 border-[1px] border-gray-300/60 items-center">
 				<div className="md:w-[50%] w-full px-7 md:py-[70px] py-5">
 					<h1 className="lg:text-4xl text-3xl font-semibold text-white md:text-start text-center">{currentWorkshop?.title}</h1>
-					<p className="lg:text-lg text-md mt-3 text-gray-100 md:text-start text-center">{currentWorkshop.description}</p>
+					<p className="lg:text-lg text-md mt-3 text-gray-100 md:text-start text-center">{currentWorkshop?.description}</p>
 				</div>
 				<div className="md:w-[50%] w-full px-7 md:py-14 py-5 ">
 					<img className="rounded-2xl hover:scale-105 transition-all duration-100 shadow-xl cursor-pointer ease-in-out" alt="" src={currentWorkshop?.image}/>
@@ -174,7 +174,7 @@ export default function WorkshopComponent() {
 							<p className="text-gray-600 text-md font-semibold flex items-center gap-1"><MdOutlineLanguage className="h-5 w-5 text-gray-600"/> {currentWorkshop?.language}</p>
 						</div>
 						{
-							currentWorkshop?.registeredParticipants.length>2 &&
+							currentWorkshop?.registeredParticipants?.length>2 &&
 							<div className="flex items-center gap-1 w-full">
 								<h1 className="text-lg text-gray-600 flex w-full items-center gap-2">
 									<div className="flex items-center">

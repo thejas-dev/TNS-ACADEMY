@@ -14,7 +14,7 @@ export const metadata = {
   description: 'Learn web development and Programming stuffs in <TNS academy/>. We faciliate a wide range of courses and workshops with a lot of useful, treding, and must know topics. Join for free and Start learning today.',
 }
 
-export default function Home({providers,session2}) {
+export default function Home({session2}) {
 
 	const {data:session} = useSession();
 	// console.log(session,session2);
@@ -78,11 +78,10 @@ export default function Home({providers,session2}) {
 
 
 export async function getServerSideProps(context){
-	const providers = await getProviders();
 	const session2 = await getSession(context);
 	return{
 		props: {
-			providers,session2
+			session2
 		}
 	}
 
