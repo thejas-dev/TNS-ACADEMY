@@ -60,11 +60,16 @@ export default function Home({session2}) {
 
 
   return (
-
+  	
+  	
     <main className="flex min-h-screen flex-col items-center justify-between relative 
     z-0 w-full bg-[#fafafe] md:overflow-y-hidden overflow-x-hidden scroll-smooth">
+	<Head>
+		<title>TNS Academy</title>
+	</Head>
       <Main/>
     </main>
+
   )
 }
 
