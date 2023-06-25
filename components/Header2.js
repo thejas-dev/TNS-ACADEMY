@@ -1,21 +1,18 @@
 import {motion} from 'framer-motion'
-import {MdOutlineLogout} from 'react-icons/md'
-import {BsChevronDown} from 'react-icons/bs'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import Sidebar from './Sidebar';
 import {signOut} from 'next-auth/react';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
 import {currentUserState} from '../atoms/userAtom';
-import {FiDatabase,FiSettings} from 'react-icons/fi'
+import {FiSettings} from 'react-icons/fi'
 import {BiLogOut} from 'react-icons/bi';
-import {CgProfile} from 'react-icons/cg';
+
 
 
 export default function Header({hide,fixed,redirect,token}) {
 	const [revealMenu,setRevealMenu] = useState(false);
 	const router = useRouter();
-	const [openServicesTab,setOpenServicesTab] = useState(false)
 	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);	
 	const [revealAccSettings,setRevealAccSettings] = useState(false);
 	

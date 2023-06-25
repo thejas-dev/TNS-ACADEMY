@@ -1,6 +1,6 @@
 import {Head} from 'next/head';
 import WorkshopComponent from '../components/WorkshopComponent';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
 import {currentWorkshopState,currentUserState} from '../atoms/userAtom';
 import {useState,useEffect} from 'react';

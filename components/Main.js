@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {useState,useEffect} from 'react';
 import {AiOutlineCalendar,AiOutlineFundProjectionScreen} from 'react-icons/ai';
 import {HiOutlineLockClosed} from 'react-icons/hi';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
 import {currentWorkshopState} from '../atoms/userAtom';
 import {MdVideoSettings} from 'react-icons/md';
@@ -50,12 +50,12 @@ export default function Main() {
 		const {data} = await axios.post(createWorkshop,{
 			title,description,image,startsAt,duration
 		})
-		console.log(data);
+		// console.log(data);
 	}
 
 	const getWorkshops = async() => {
 		const {data} = await axios.get(getAllWorkshops);
-		console.log(data);
+		//console.log(data);
 		setWorkshops(data.data);
 		setAlertWorkshop(data.data[0]);
 	}

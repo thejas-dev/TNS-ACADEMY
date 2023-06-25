@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react'
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
 import {currentUserState} from '../atoms/userAtom';
 import {FcGoogle} from 'react-icons/fc';
@@ -135,7 +135,7 @@ export default function LoginComponent({id,session,session2}) {
 				}).then(response => {
 				    setImgurl(response.url);
 				    setLoading(false)
-				    console.log("result came")
+				    // console.log("result came")
 				}).catch(error => {
 				    console.log(error.message);
 				});

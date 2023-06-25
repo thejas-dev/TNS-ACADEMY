@@ -1,8 +1,4 @@
-import {FiDatabase} from 'react-icons/fi';
 import {motion} from 'framer-motion'
-import {BsChevronDown} from 'react-icons/bs'
-import {useState} from 'react';
-import {useRouter} from 'next/router'
 import {MdOutlineLogout} from 'react-icons/md'
 
 export default function Sidebar({router,currentUser,revealMenu,setRevealMenu,logMeOut}) {

@@ -6,7 +6,7 @@ import {IoMdTime} from 'react-icons/io';
 import {AiOutlineInstagram,AiOutlineCalendar} from 'react-icons/ai';
 import {currentWorkshopState,currentUserState} from '../atoms/userAtom';
 import {useRecoilState} from 'recoil';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import axios from 'axios';
 import {updateWorkshop,updateRegisteredWorkshops} from '../utils/ApiRoutes';
 import {TiTick} from 'react-icons/ti';
@@ -38,7 +38,7 @@ export default function WorkshopComponent() {
 				registeredParticipants:newRegisteredParticipants
 			})
 			setCurrentWorkshop(data.obj);
-			console.log(data)
+			// console.log(data)
 			let newRegisteredWorkshops = [currentWorkshop._id,...currentUser.registeredWorkshops];
 			const data2 = await axios.post(`${updateRegisteredWorkshops}/${currentUser._id}`,{
 				registeredWorkshops:newRegisteredWorkshops,
@@ -46,7 +46,7 @@ export default function WorkshopComponent() {
 				currentWorkshop
 			})
 			setCurrentUser(data2.data.obj);
-			console.log(data2);
+			// console.log(data2);
 			showSuccesfullyRegisteredMessage();
 		}else if(!currentWorkshop || !currentUser){
 			router.push('/')
