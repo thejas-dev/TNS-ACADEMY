@@ -379,21 +379,24 @@ export default function LoginComponent({id,session,session2}) {
 							))
 						}
 					</div>
-					<button 
-					onClick={createAccountInData}
-					className="md:mt-[30px] mt-5 rounded-xl border-[1.7px] hover:scale-110 transition-all duration-100 ease-in border-blue-500/40 
-					md:px-14 px-5 py-3 md:bg-black/10 bg-black/30 text-green-400 font-semibold text-lg flex gap-2 items-center">
-						{
-							confirmed ? 
-							!accountLoading ?
-							'Create Account'
-							:
-							<span className="loader6"/>
-							:							
-							'Confirm'
-							
-						}
-					</button>
+					{
+						!currentUser &&
+						<button 
+						onClick={createAccountInData}
+						className="md:mt-[30px] mt-5 rounded-xl border-[1.7px] hover:scale-110 transition-all duration-100 ease-in border-blue-500/40 
+						md:px-14 px-5 py-3 md:bg-black/10 bg-black/30 text-green-400 font-semibold text-lg flex gap-2 items-center">
+							{
+								confirmed ? 
+								!accountLoading ?
+								'Create Account'
+								:
+								<span className="loader6"/>
+								:							
+								'Confirm'
+								
+							}
+						</button>
+					}
 					{
 						accountLoading ?
 						loading ?
