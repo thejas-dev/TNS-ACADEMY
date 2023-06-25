@@ -7,6 +7,7 @@ import {useEffect} from 'react'
 import {useRecoilState} from 'recoil'
 import {currentUserState} from '../atoms/userAtom';
 import {Head} from 'next/head';
+import React from 'react';
 
 export const metadata = {
   title: 'TNS-Academy',

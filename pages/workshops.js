@@ -1,4 +1,5 @@
 import {Head} from 'next/head';
+import React from 'react';
 import WorkshopComponent from '../components/WorkshopComponent';
 import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
@@ -19,14 +20,10 @@ export default function Workshops() {
 	},[currentUser])
 
 	return (
-	<div>
-		<Head>
-	  		<title>Workshops</title>
-	  	</Head>
+
 		<main className="w-full h-screen overflow-y-scroll scrollbar-thin scroll-smooth bg-gray-100">
 			<WorkshopComponent />
 
 		</main>
-	</div>
 	)
 }

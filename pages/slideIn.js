@@ -1,7 +1,7 @@
 import {Head} from 'next/head';
 import LoginComponent from '../components/LoginComponent'
 import {getProviders,getSession,useSession} from 'next-auth/react'
-
+import React from 'react';
 
 
 export default function SlideIn({providers,session2}) {
@@ -10,15 +10,12 @@ export default function SlideIn({providers,session2}) {
 
 
 	return (
-		<div>
-		<Head>
-	  		<title>Login to TNS Academy</title>
-	  	</Head>
+		
 		<main className="w-full h-screen overflow-hidden ">
 			<LoginComponent id={providers.google.id} session={session} session2={session2}/>
 
 		</main>
-		</div>
+		
 
 
 	)
