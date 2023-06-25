@@ -6,7 +6,7 @@ import {currentWorkshopState,currentUserState} from '../atoms/userAtom';
 import {useEffect} from 'react';
 
 
-export default function workshops() {
+export default function Workshops() {
 	// body...
 	const router = useRouter();
 	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);

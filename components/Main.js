@@ -109,7 +109,7 @@ export default function Main() {
 						<h1 className="text-xl font-semibold text-gray-800">
 							Welcome to TNS academy, your virtual hub for comprehensive web development and programming education. 
 							We offer an immersive learning experience through engaging video tutorials and interactive workshops. 
-							Whether you're a beginner taking your first steps or an experienced developer seeking to level up your skills, 
+							Whether you are a beginner taking your first steps or an experienced developer seeking to level up your skills, 
 							we will guide you in honing your skills to create stunning websites, robust applications, and groundbreaking solutions. Join our thriving community of 
 							learners and unlock your potential in the world of digital innovation. Get started today and embark on 
 							a path to success in the exciting realm of web development and programming.
@@ -128,8 +128,8 @@ export default function Main() {
 				<p className="text-gray-600 mx-auto font-semibold mt-4 text-xl">Every weekend workshops will be conducted</p>
 				<div className="w-full grid grid-cols-1 mt-7 md:grid-cols-3 gap-5 px-3">
 					{
-						workshops.map((dat)=>(
-							<div 
+						workshops.map((dat,l)=>(
+							<div key={l}
 							onClick={()=>{
 								setCurrentWorkshop(dat);
 								router.push('/workshops')
@@ -163,8 +163,8 @@ export default function Main() {
 				<h1 className="text-gray-800 mx-auto lg:text-5xl md:text-3xl text-3xl underline font-semibold">Courses</h1>
 				<div className="w-full grid grid-cols-1 mt-8 md:grid-cols-3 gap-5 px-3">
 					{
-						data2.map((dat)=>(
-							<div className={`relative rounded-xl flex cursor-pointer ${dat.locked ? 'hover:scale-95':'' }  transition-all duration-100 ease-in-out
+						data2.map((dat,j)=>(
+							<div key={j} className={`relative rounded-xl flex cursor-pointer ${dat.locked ? 'hover:scale-95':'' }  transition-all duration-100 ease-in-out
 							 flex-col shadow-xl border-[1px] border-gray-700/40 overflow-hidden pb-3`}>
 								<div className={`absolute h-full w-full bg-white/80 ${dat.locked ? 'flex' : 'hidden'} items-center justify-center`}>
 									<HiOutlineLockClosed className="h-7 w-7 text-gray-700 "/>

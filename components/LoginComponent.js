@@ -263,8 +263,8 @@ export default function LoginComponent({id,session,session2}) {
 						Slide In
 					</h1>
 					<p className={`mt-7 md:w-[400px] w-[80%] text-md text-gray-300 font-semibold ${infoShown && 'hidden' } `}>
-						By logging in, you'll automatically receive our weekly newsletter in your email inbox. Explore the latest 
-						trends, insights, and updates in web development, programming, and technology. Manage your email preferences
+						By Signing up, you will be automatically subscribed to our weekly newsletters. Explore the latest 
+						trends, insights, and updates in web development, programming and technology from your mail inbox. Manage your email preferences
 						anytime in your account settings.
 					</p>
 					<p className={`mt-7 md:w-[400px] w-[80%] text-md text-gray-300 font-semibold ${!infoShown && 'hidden' } `}>

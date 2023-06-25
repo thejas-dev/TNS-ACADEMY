@@ -179,8 +179,8 @@ export default function WorkshopComponent() {
 								<h1 className="text-lg text-gray-600 flex w-full items-center gap-2">
 									<div className="flex items-center">
 									{
-										currentWorkshop?.registeredParticipants?.map((reg)=>(
-											<img src={reg.image} alt="" className="h-5 w-5 rounded-full"/>
+										currentWorkshop?.registeredParticipants?.map((reg,j)=>(
+											<img src={reg.image} alt="" key={j} className="h-5 w-5 rounded-full"/>
 										))
 									}
 									</div>
@@ -212,7 +212,7 @@ export default function WorkshopComponent() {
 							</tr>
 							{
 								currentWorkshop?.datesAndTimings?.map((dat,i)=>(
-									<tr className={`border-y-[1px] ${i%2 === 0 && 'bg-black/10' } border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out`}>
+									<tr key={i} className={`border-y-[1px] ${i%2 === 0 && 'bg-black/10' } border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out`}>
 										<td className="px-7 py-2" >{dat?.split('(')[0]}</td>
 										<td className="px-7 py-2" >{dat?.split('(')[1]?.split(')')[0]?.split(':')[1]}</td>
 									</tr>
@@ -226,17 +226,17 @@ export default function WorkshopComponent() {
 				<h1 className="xl:text-4xl underline lg:text-3xl text-center mb-8 md:text-3xl text-3xl font-semibold text-black">Topics To Be Covered</h1>
 				{
 					currentWorkshop?.learn?.map((ln,j)=>(
-						<div className={`w-full text-start ${j>0 ? 'mt-7' : 'mt-10'} `}>
+						<div key={j} className={`w-full text-start ${j>0 ? 'mt-7' : 'mt-10'} `}>
 							<h1 className="lg:text-2xl text-xl font-semibold text-black	">Day {j+1} ({ln.date}) :-</h1>
 							<p className="text-gray-600 text-md font-semibold flex mt-2 mb-2
 							items-center gap-1"><IoMdTime className="h-5 w-5 text-gray-600"/> {ln?.time}</p>
 							{
 								ln?.sessions?.map((sess,i)=>(
-								<div className="py-3 flex flex-col gap-[6px]">
+								<div key={i} className="py-3 flex flex-col gap-[6px]">
 									<h1 className=' md:text-xl text-lg text-gray-950 '>{sess?.sessionNumber}. {sess?.title} ({sess?.duration})</h1>
 									{
 										sess?.topics?.map((top,k)=>(
-											<div className="py-3 pl-3 flex gap-[4px]">
+											<div key={k} className="py-3 pl-3 flex gap-[4px]">
 												<h1 className="md:text-lg text-md text-gray-800">- </h1>
 												<h1 className=' md:text-lg text-md text-gray-800 '>{top}</h1>
 											</div>
@@ -254,8 +254,8 @@ export default function WorkshopComponent() {
 				<div className="w-full text-start ">
 					<h1 className="xl:text-2xl lg:text-xl text-lg font-semibold text-black	">Requirements :-</h1>
 					<div className="pl-3 py-3 flex flex-col gap-[6px]">
-						{currentWorkshop?.requirements?.map((req)=>(
-							<h1 className=' xl:text-lg md:text-md text-gray-700 '>- {req}</h1>
+						{currentWorkshop?.requirements?.map((req,j)=>(
+							<h1 key={j} className=' xl:text-lg md:text-md text-gray-700 '>- {req}</h1>
 						))}
 					</div>	
 				</div>				

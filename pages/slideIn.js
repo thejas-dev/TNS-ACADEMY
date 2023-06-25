@@ -4,9 +4,9 @@ import {getProviders,getSession,useSession} from 'next-auth/react'
 
 
 
-export default function slideIn({providers,session2}) {
+export default function SlideIn({providers,session2}) {
 	
-	const {data:session} = useSession();
+	const {data:session} = useSession()
 
 
 	return (
