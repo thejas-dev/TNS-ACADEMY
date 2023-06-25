@@ -17,7 +17,7 @@ export default function Workshops() {
 		if(!currentWorkshop){
 			router.push('/')
 		}else if(!currentUser){
-			router.push('/slidein')
+			router.push('/slideIn')
 		}
 	},[currentUser])
 
