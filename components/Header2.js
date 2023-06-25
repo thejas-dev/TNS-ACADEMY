@@ -151,7 +151,7 @@ export default function Header({hide,fixed,redirect,token}) {
 					</div>
 				</motion.div>
 				<div className={`fixed ${revealMenu ? "left-0": "left-[100%]"} top-0 z-40 transition-all duration-500 ease-in-out w-full h-full  `}>
-		          <Sidebar currentUser={currentUser} revealMenu={revealMenu} setRevealMenu={setRevealMenu} logMeOut={logMeOut} />    
+		          <Sidebar router={router} currentUser={currentUser} revealMenu={revealMenu} setRevealMenu={setRevealMenu} logMeOut={logMeOut} />    
 		        </div>
 
 			</div>

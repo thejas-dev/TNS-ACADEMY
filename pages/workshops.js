@@ -14,8 +14,10 @@ export default function Workshops() {
 	const [currentWorkshop,setCurrentWorkshop] = useRecoilState(currentWorkshopState);
 
 	useEffect(()=>{
-		if(!currentUser || !currentWorkshop){
+		if(!currentWorkshop){
 			router.push('/')
+		}else if(!currentUser){
+			router.push('/slidein')
 		}
 	},[currentUser])
 
