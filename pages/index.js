@@ -9,10 +9,6 @@ import {currentUserState} from '../atoms/userAtom';
 import {Head} from 'next/head';
 import React from 'react';
 
-export const metadata = {
-  title: 'TNS-Academy',
-  description: 'Learn web development and Programming stuffs in <TNS academy/>. We faciliate a wide range of courses and workshops with a lot of useful, treding, and must know topics. Join for free and Start learning today.',
-}
 
 export default function Home({session2}) {
 
@@ -64,15 +60,11 @@ export default function Home({session2}) {
 
 
   return (
-  	<>
-  	<Head>
-  		<title>TNS Academy</title>
-  	</Head>
+
     <main className="flex min-h-screen flex-col items-center justify-between relative 
     z-0 w-full bg-[#fafafe] md:overflow-y-hidden overflow-x-hidden scroll-smooth">
       <Main/>
     </main>
-    </>
   )
 }
 
