@@ -19,7 +19,7 @@ export default function Workshops() {
 	},[currentUser])
 
 	return (
-	<>
+	<div>
 		<Head>
 	  		<title>Workshops</title>
 	  	</Head>
@@ -27,6 +27,6 @@ export default function Workshops() {
 			<WorkshopComponent />
 
 		</main>
-	</>
+	</div>
 	)
 }

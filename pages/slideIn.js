@@ -10,7 +10,7 @@ export default function SlideIn({providers,session2}) {
 
 
 	return (
-		<>
+		<div>
 		<Head>
 	  		<title>Login to TNS Academy</title>
 	  	</Head>
@@ -18,7 +18,7 @@ export default function SlideIn({providers,session2}) {
 			<LoginComponent id={providers.google.id} session={session} session2={session2}/>
 
 		</main>
-		</>
+		</div>
 
 
 	)
