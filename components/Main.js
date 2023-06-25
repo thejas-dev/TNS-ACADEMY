@@ -159,9 +159,9 @@ export default function Main() {
 			</div>
 			<div 
 			id="courses"
-			className="mt-[100px] max-w-6xl mx-auto flex flex-col">
+			className="mt-[100px] max-w-6xl mx-auto flex flex-col px-3">
 				<h1 className="text-gray-800 mx-auto lg:text-5xl md:text-3xl text-3xl underline font-semibold">Courses</h1>
-				<div className="w-full grid grid-cols-1 mt-8 md:grid-cols-3 gap-5 px-3">
+				<div className="w-full grid grid-cols-1 mt-8 md:grid-cols-3 gap-5 ">
 					{
 						data2.map((dat,j)=>(
 							<div key={j} className={`relative rounded-xl flex cursor-pointer ${dat.locked ? 'hover:scale-95':'' }  transition-all duration-100 ease-in-out
