@@ -2,6 +2,8 @@
   "extends": "next",
   "plugins": ["react-hooks"],
   "rules":{
-  	"react-hooks/exhaustive-deps":0
+  	"react-hooks/exhaustive-deps":0,
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
   }
 }
