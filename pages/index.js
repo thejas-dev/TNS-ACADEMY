@@ -6,7 +6,7 @@ import axios from 'axios';
 import {useEffect} from 'react'
 import {useRecoilState} from 'recoil'
 import {currentUserState} from '../atoms/userAtom';
-import {Head} from 'next/head';
+import Head from 'next/head';
 import React from 'react';
 
 
@@ -60,14 +60,15 @@ export default function Home({session2}) {
 
 
   return (
-  	
-  	
+  	<div>
+  	<Head>
+  		<title>TNS Academy</title>
+  	</Head>
     <main className="flex min-h-screen flex-col items-center justify-between relative 
     z-0 w-full bg-[#fafafe] md:overflow-y-hidden overflow-x-hidden scroll-smooth">
-	
       <Main/>
     </main>
-
+    </div>
   )
 }
 
