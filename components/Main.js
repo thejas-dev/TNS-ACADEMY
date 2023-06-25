@@ -123,10 +123,10 @@ export default function Main() {
 			</div>
 			<div 
 			id="workshops"
-			className="mt-10 max-w-6xl mx-auto flex flex-col">
+			className="mt-10 max-w-6xl mx-auto flex flex-col px-3">
 				<h1 className="text-gray-800 mx-auto lg:text-5xl md:text-3xl text-2xl underline font-semibold">Workshops</h1>
 				<p className="text-gray-600 mx-auto font-semibold mt-4 text-xl">Every weekend workshops will be conducted</p>
-				<div className="w-full grid grid-cols-1 mt-7 md:grid-cols-3 gap-5 px-3">
+				<div className="w-full grid grid-cols-1 mt-7 md:grid-cols-3 gap-5 ">
 					{
 						workshops.map((dat,l)=>(
 							<div key={l}
