@@ -88,7 +88,7 @@ export default function WorkshopComponent() {
 
 		var diff = new DateDiff(date2, date1);
 		
-		if(diff.minutes() < 5 ){
+		if(diff.minutes() < 1 ){
 			setRemainingTime('Closed')
 		}else{
 			setRemainingTime(timediff(date1,date2));
@@ -129,22 +129,47 @@ export default function WorkshopComponent() {
 					<img className="rounded-2xl hover:scale-105 transition-all duration-100 shadow-xl cursor-pointer ease-in-out" alt="" src={currentWorkshop?.image}/>
 				</div>
 				<div className={`${remainingTime ? 'absolute' : 'hidden'} -bottom-[60px]  md:w-[50%] w-[90%] rounded-2xl left-1/2 right-0 -translate-x-1/2 mx-auto bg-red-500 px-5 py-2 shadow-xl`}>
-					<h1 className="text-lg text-white font-semibold">Registration Ends In:-</h1>
+					<h1 className="text-lg text-white font-semibold">{
+						remainingTime === 'Closed' ? 
+						'Registration Closed'
+						:
+						'Registration Ends In:-'
+					}</h1>
 					<div className="flex mt-3 items-center w-full justify-between px-2">
 						<div className="flex items-center flex-col gap-1">
-							<h1 className="text-white text-xl font-bold">{remainingTime?.days}</h1>
+							<h1 className="text-white text-xl font-bold">{
+								remainingTime === 'Closed' ? 
+								'0'
+								:
+								remainingTime?.days
+							}</h1>
 							<p className="text-gray-100 text-md">Days</p>
 						</div>
 						<div className="flex items-center flex-col gap-1">
-							<h1 className="text-white text-xl font-bold">{remainingTime?.hours}</h1>
+							<h1 className="text-white text-xl font-bold">{
+								remainingTime === 'Closed' ? 
+								'0'
+								:
+								remainingTime?.hours
+							}</h1>
 							<p className="text-gray-100 text-md">Hours</p>
 						</div>
 						<div className="flex items-center flex-col gap-1">
-							<h1 className="text-white text-xl font-bold">{remainingTime?.minutes}</h1>
+							<h1 className="text-white text-xl font-bold">{
+								remainingTime === 'Closed' ? 
+								'0'
+								:
+								remainingTime?.minutes
+							}</h1>
 							<p className="text-gray-100 text-md">Minutes</p>
 						</div>
 						<div className="flex items-center flex-col gap-1">
-							<h1 className="text-white text-xl font-bold">{remainingTime?.seconds}</h1>
+							<h1 className="text-white text-xl font-bold">{
+								remainingTime === 'Closed' ? 
+								'0'
+								:
+								remainingTime?.seconds
+							}</h1>
 							<p className="text-gray-100 text-md">Seconds</p>
 						</div>
 					</div>
@@ -159,7 +184,7 @@ export default function WorkshopComponent() {
 							onClick={joinThisWorkshop}
 							className={`rounded-xl lg:px-14 px-7 lg:py-2 py-[5px] ${joined ? 'bg-gray-100 text-black' : 'bg-gradient-to-r from-black/70 to-black text-white'} md:text-xl text-lg font-semibold 
 							border-[1px] border-sky-700/50 shadow-lg shadow-purple-500/30 hover:scale-110 
-							transition-all ease-in-out duration-100`}>
+							transition-all ease-in-out duration-100 ${remainingTime === 'Closed' && 'hidden'}`}>
 								{
 									joined ? 
 									'Joined'
