@@ -180,7 +180,7 @@ export default function WorkshopComponent() {
 									<div className="flex items-center">
 									{
 										currentWorkshop?.registeredParticipants?.map((reg,j)=>(
-											<img src={reg.image} alt="" key={j} className="h-5 w-5 rounded-full"/>
+											<img src={reg.image} alt="" key={j} className={`h-5 w-5 ${j>2 && 'hidden'} rounded-full`}/>
 										))
 									}
 									</div>
