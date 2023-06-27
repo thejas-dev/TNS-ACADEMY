@@ -23,7 +23,7 @@ export default function LoginComponent({id,session,session2}) {
 	const [accountLoading,setAccountLoading] = useState(false);
 	const [url,setUrl] = useState('');
 	const [path,setPath] = useState('');
-	const [imgurl,setImgurl] = useState('');
+	const [imgurl,setImgurl] = useState('https://ik.imagekit.io/d3kzbpbila/default-user_qE1tzA4fP.jpg?updatedAt=1687883494785');
 	const [imageLoaded,setImageLoaded] = useState(false);
 	const [selectedOption,setSelectedOption] = useState('');
 	const [revealData,setRevealData] = useState(true);

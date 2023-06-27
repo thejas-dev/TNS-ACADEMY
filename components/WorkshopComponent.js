@@ -84,7 +84,7 @@ export default function WorkshopComponent() {
 		const temp = currentWorkshop?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
 		temp[0] = '20'+temp[0];
 		const currentdate = new Date(temp.join('-'))
-		const date2 = new Date(currentdate.getTime() + 15 * 60 * 60 * 1000);
+		const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
 
 		var diff = new DateDiff(date2, date1);
 		
@@ -219,7 +219,13 @@ export default function WorkshopComponent() {
 						<div className="flex flex-col gap-[6px] w-full">
 							<div className="flex items-center">
 								<p className="text-gray-600 text-md font-semibold flex items-center gap-2">
-									<SiGooglemeet className="h-5 w-4 text-gray-600"/>  Workshop will be conduted on Google Meet
+									<SiGooglemeet className="h-5 w-4 text-gray-600"/>  
+									{
+										joined ? 
+										<a href="https://meet.google.com/ovz-iavg-bve">https://meet.google.com/ovz-iavg-bve</a>
+										:
+										'Workshop will be conduted on Google Meet'
+									}
 								</p>
 							</div>
 							<div className="flex items-center gap-2">
