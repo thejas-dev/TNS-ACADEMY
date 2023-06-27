@@ -18,13 +18,13 @@ export default function LoginComponent({id,session,session2}) {
 	const [currentWindow,setCurrentWindow] = useState('login')
 	const router = useRouter();
 	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);
-	const [showImageOption,setShowImageOption] = useState(true);
+	const [showImageOption,setShowImageOption] = useState(false);
 	const [loading,setLoading] = useState(false);
 	const [accountLoading,setAccountLoading] = useState(false);
-	const [url,setUrl] = useState('https://ik.imagekit.io/d3kzbpbila/default-user_qE1tzA4fP.jpg?updatedAt=1687883494785');
+	const [url,setUrl] = useState('');
 	const [path,setPath] = useState('');
 	const [imgurl,setImgurl] = useState('');
-	const [imageLoaded,setImageLoaded] = useState(true);
+	const [imageLoaded,setImageLoaded] = useState(false);
 	const [selectedOption,setSelectedOption] = useState('');
 	const [revealData,setRevealData] = useState(true);
 	const [confirmed,setConfirmed] = useState(false);
