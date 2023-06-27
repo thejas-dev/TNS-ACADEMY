@@ -18,13 +18,13 @@ export default function LoginComponent({id,session,session2}) {
 	const [currentWindow,setCurrentWindow] = useState('login')
 	const router = useRouter();
 	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);
-	const [showImageOption,setShowImageOption] = useState(false);
+	const [showImageOption,setShowImageOption] = useState(true);
 	const [loading,setLoading] = useState(false);
 	const [accountLoading,setAccountLoading] = useState(false);
-	const [url,setUrl] = useState('');
+	const [url,setUrl] = useState('https://ik.imagekit.io/d3kzbpbila/default-user_qE1tzA4fP.jpg?updatedAt=1687883494785');
 	const [path,setPath] = useState('');
-	const [imgurl,setImgurl] = useState('');
-	const [imageLoaded,setImageLoaded] = useState(false);
+	const [imgurl,setImgurl] = useState('https://ik.imagekit.io/d3kzbpbila/default-user_qE1tzA4fP.jpg?updatedAt=1687883494785');
+	const [imageLoaded,setImageLoaded] = useState(true);
 	const [selectedOption,setSelectedOption] = useState('');
 	const [revealData,setRevealData] = useState(true);
 	const [confirmed,setConfirmed] = useState(false);
@@ -324,7 +324,9 @@ export default function LoginComponent({id,session,session2}) {
 							</div>
 							<div 
 							onClick={()=>{
-								upload();
+								if(!imgurl){
+									upload();
+								}
 								setCurrentWindow('level')
 							}}
 							className="absolute bottom-1 right-5 p-1 rounded-full bg-gray-100/10 cursor-pointer hover:bg-gray-300/20">
