@@ -83,8 +83,8 @@ export default function WorkshopComponent() {
 		const date1 = new Date();
 		const temp = currentWorkshop?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
 		temp[0] = '20'+temp[0];
-		const currentdate = new Date(temp.join('-'))
-		const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
+		const date2 = new Date(temp.join('-'))
+		// const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
 
 		var diff = new DateDiff(date2, date1);
 		
