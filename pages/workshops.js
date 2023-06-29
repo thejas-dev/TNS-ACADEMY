@@ -5,7 +5,6 @@ import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
 import {currentWorkshopState,currentUserState} from '../atoms/userAtom';
 import {useEffect} from 'react';
-import Head from 'next/head';
 
 export default function Workshops() {
 	// body...
@@ -24,7 +23,7 @@ export default function Workshops() {
 	return (
 		<div>
 		<Head>
-	  		<title>TNS Academy</title>
+	  		<title>Workshops</title>
 	  	</Head>
 		<main className="w-full h-screen overflow-y-scroll scrollbar-thin scroll-smooth bg-gray-100">
 			<WorkshopComponent />

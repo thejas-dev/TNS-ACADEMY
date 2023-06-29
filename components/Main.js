@@ -56,8 +56,8 @@ export default function Main() {
 	const getWorkshops = async() => {
 		const {data} = await axios.get(getAllWorkshops);
 		//console.log(data);
-		setWorkshops(data.data);
-		setAlertWorkshop(data.data[0]);
+		setWorkshops(data?.data);
+		setAlertWorkshop(data?.data[1]);
 	}
 
 	const data2 = [{
