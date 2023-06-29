@@ -222,7 +222,10 @@ export default function WorkshopComponent() {
 									<SiGooglemeet className="h-5 w-4 text-gray-600"/>  
 									{
 										joined ? 
-										<a href="https://meet.google.com/ovz-iavg-bve">https://meet.google.com/ovz-iavg-bve</a>
+										remainingTime?.days < 1 ?
+										<a href={currentWorkshop?.meetingLink}>{currentWorkshop?.meetingLink}</a>
+										:
+										'Workshop will be conduted on Google Meet'
 										:
 										'Workshop will be conduted on Google Meet'
 									}
