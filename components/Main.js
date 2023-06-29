@@ -211,7 +211,7 @@ export default function Main() {
 					}} 
 					className="px-7 md:px-10 text-white bg-gradient-to-r from-black/70 to-black text-white py-2 rounded-xl border-[1px] 
 					border-purple-700/50 shadow-lg shadow-purple-500/30 hover:scale-110 transition-all ease-in-out 
-					duration-100 md:text-md text-sm font-semibold">
+					duration-100 text-md font-semibold">
 						Join
 					</button>
 				</div>
