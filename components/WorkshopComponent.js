@@ -238,7 +238,7 @@ export default function WorkshopComponent() {
 								</p>
 							</div>
 							<div className="flex items-center gap-2">
-								<p className="text-gray-600 text-md flex md:items-center gap-2">
+								<p className="text-gray-600 text-md flex items-center gap-2">
 									<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
 								</p>
 							</div>
