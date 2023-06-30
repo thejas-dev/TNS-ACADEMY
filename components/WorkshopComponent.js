@@ -14,7 +14,7 @@ import {SiGooglemeet} from 'react-icons/si';
 import {FcGoogle} from 'react-icons/fc';
 import {BsFillShareFill} from 'react-icons/bs';
 import {MdOutlineLanguage} from 'react-icons/md';
-import {PiCertificate} from 'react-icons/pi';
+import {TbCertificate} from 'react-icons/tb';
 
 export default function WorkshopComponent() {
 	const [remainingTime,setRemainingTime] = useState('');
@@ -239,7 +239,7 @@ export default function WorkshopComponent() {
 							</div>
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex md:items-center gap-2">
-									<PiCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
+									<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
 								</p>
 							</div>
 						</div>
