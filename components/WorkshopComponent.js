@@ -29,24 +29,24 @@ export default function WorkshopComponent() {
 		if(!joined && currentWorkshop && currentUser){
 			setJoined(true);
 			let user = {
-				name:currentUser.name,
-				image:currentUser.image,
-				email:currentUser.email,
-				id:currentUser._id
+				name:currentUser?.name,
+				image:currentUser?.image,
+				email:currentUser?.email,
+				id:currentUser?._id
 			}
 			let newRegisteredParticipants = [user,...currentWorkshop?.registeredParticipants];			
-			const {data} = await axios.post(`${updateWorkshop}/${currentWorkshop._id}`,{
+			const {data} = await axios.post(`${updateWorkshop}/${currentWorkshop?._id}`,{
 				registeredParticipants:newRegisteredParticipants
 			})
-			setCurrentWorkshop(data.obj);
+			setCurrentWorkshop(data?.obj);
 			
 			let newRegisteredWorkshops = [currentWorkshop._id,...currentUser.registeredWorkshops];
-			const data2 = await axios.post(`${updateRegisteredWorkshops}/${currentUser._id}`,{
+			const data2 = await axios.post(`${updateRegisteredWorkshops}/${currentUser?._id}`,{
 				registeredWorkshops:newRegisteredWorkshops,
-				email:currentUser.email,
+				email:currentUser?.email,
 				currentWorkshop
 			})
-			setCurrentUser(data2.data.obj);
+			setCurrentUser(data2?.data?.obj);
 			
 			showSuccesfullyRegisteredMessage();
 		}else if(!currentWorkshop || !currentUser){
@@ -84,11 +84,11 @@ export default function WorkshopComponent() {
 		const date1 = new Date();
 		const temp = currentWorkshop?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
 		temp[0] = '20'+temp[0];
-		const currentdate = new Date(temp.join('-'))
+		const currentdate = new Date(temp?.join('-'))
 		const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
 
 		var diff = new DateDiff(date2, date1);
-		if(diff.minutes() < 1 ){
+		if(diff?.minutes() < 1 ){
 			setRemainingTime('Closed')
 		}else{
 			setRemainingTime(timediff(date1,date2));
@@ -238,7 +238,10 @@ export default function WorkshopComponent() {
 							</div>
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex items-center gap-2">
-									<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
+									{
+										TbCertificate &&
+										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
+									}
 								</p>
 							</div>
 						</div>
