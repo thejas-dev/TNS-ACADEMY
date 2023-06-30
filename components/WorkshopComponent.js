@@ -14,6 +14,7 @@ import {SiGooglemeet} from 'react-icons/si';
 import {FcGoogle} from 'react-icons/fc';
 import {BsFillShareFill} from 'react-icons/bs';
 import {MdOutlineLanguage} from 'react-icons/md';
+import {PiCertificate} from 'react-icons/pi';
 
 export default function WorkshopComponent() {
 	const [remainingTime,setRemainingTime] = useState('');
@@ -225,7 +226,7 @@ export default function WorkshopComponent() {
 										remainingTime?.days < 1 ?
 										<a href={currentWorkshop?.meetingLink}>{currentWorkshop?.meetingLink}</a>
 										:
-										'Workshop will be conduted on Google Meet'
+										'Meeting Link will appear here one day before the workshop'
 										:
 										'Workshop will be conduted on Google Meet'
 									}
@@ -234,6 +235,11 @@ export default function WorkshopComponent() {
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex md:items-center gap-2">
 									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Meeting link will be shared to Mail inbox and Whatsapp group
+								</p>
+							</div>
+							<div className="flex items-center gap-2">
+								<p className="text-gray-600 text-md flex md:items-center gap-2">
+									<PiCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
 								</p>
 							</div>
 						</div>
