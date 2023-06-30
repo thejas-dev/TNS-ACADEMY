@@ -88,7 +88,6 @@ export default function WorkshopComponent() {
 		const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
 
 		var diff = new DateDiff(date2, date1);
-		console.log(diff?.days())
 		if(diff.minutes() < 1 ){
 			setRemainingTime('Closed')
 		}else{
