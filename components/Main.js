@@ -132,7 +132,10 @@ export default function Main() {
 							<div key={l}
 							onClick={()=>{
 								setCurrentWorkshop(dat);
-								router.push('/workshops')
+								router.push({
+									pathname:`/workshops`,
+									query:{id:dat._id}
+								})
 							}}
 							className="rounded-xl flex cursor-pointer hover:scale-95 transition-all duration-200 ease-in-out
 							flex-col shadow-xl border-[1px] border-gray-700/40 overflow-hidden pb-3">

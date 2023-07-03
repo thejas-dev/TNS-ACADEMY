@@ -24,6 +24,7 @@ export default function WorkshopComponent() {
 	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);
 	const router = useRouter();
 	const [successMessage,setSuccessMessage] = useState(false);
+	const [certificate,setCertificate] = useState('');
 
 	const joinThisWorkshop = async() => {
 		if(!joined && currentWorkshop && currentUser){
@@ -65,6 +66,18 @@ export default function WorkshopComponent() {
 	},[currentUser])
 
 			
+	useEffect(()=>{
+		if(currentWorkshop){
+			try{
+				if(currentUser?.certificates[currentWorkshop._id]){
+					let cer = currentUser?.certificates[currentWorkshop._id];
+					setCertificate(cer)
+				}
+			}catch(err){
+
+			}
+		}
+	},[currentWorkshop])
 
 
 	const showSuccesfullyRegisteredMessage = async() => {
@@ -236,8 +249,19 @@ export default function WorkshopComponent() {
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex items-center gap-2">
 									{
-										TbCertificate &&
-										<><TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided</>
+										joined ? 
+										certificate ?
+										<>
+										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/><a href={certificate} className="text-sky-500" download="true">Download certificate</a>
+										</>
+										:
+										<>
+										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
+										</>
+										:
+										<>
+										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided			
+										</>
 									}
 								</p>
 							</div>
@@ -245,16 +269,18 @@ export default function WorkshopComponent() {
 					</div>
 					<div className={`grow md:mt-0 mt-5 ${currentWorkshop ? 'flex' : 'hidden'} justify-center h-full`} >
 						<table className="table-fixed">
-							<tr className="border-y-[1px] border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out" >
-								<th className="px-7 py-2" >Date</th>
-								<th className="px-7 py-2">Timing</th>
-							</tr>
+							<thead className="border-y-[1px] border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out" >
+								<tr>
+									<td className="px-7 py-5" >Date</td>
+									<td className="px-7 py-5">Timing</td>
+								</tr>
+							</thead>
 							{
 								currentWorkshop?.datesAndTimings?.map((dat,i)=>(
-									<tr key={i} className={`border-y-[1px] ${i%2 === 0 && 'bg-black/10' } border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out`}>
+									<tbody key={i} className={`border-y-[1px] ${i%2 === 0 && 'bg-black/10' } border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out`}>
 										<td className="px-7 py-2" >{dat?.split('(')[0]}</td>
 										<td className="px-7 py-2" >{dat?.split('(')[1]?.split(')')[0]?.split(':')[1]}</td>
-									</tr>
+									</tbody>
 								))
 							}
 						</table>

@@ -6,3 +6,4 @@ export const loginRoute = `${host}/api/auth/login`;
 export const createWorkshop = `${host}/api/auth/createWorkshop`;
 export const updateWorkshop = `${host}/api/auth/updateWorkshop`;
 export const updateRegisteredWorkshops = `${host}/api/auth/updateRegisteredWorkshops`;
+export const getWorkshop = `${host}/api/auth/getWorkshop`;
