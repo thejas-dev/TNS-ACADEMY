@@ -252,7 +252,7 @@ export default function WorkshopComponent() {
 										joined ? 
 										certificate ?
 										<>
-										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/><a href={certificate} className="text-sky-500" download="true">Download certificate</a>
+										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/><a href={certificate} className="text-sky-500" target="blank" download="true">Download certificate</a>
 										</>
 										:
 										<>
