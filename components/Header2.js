@@ -7,7 +7,7 @@ import {useRecoilState} from 'recoil'
 import {currentUserState} from '../atoms/userAtom';
 import {FiSettings} from 'react-icons/fi'
 import {BiLogOut} from 'react-icons/bi';
-
+import {PiUserCircleFill} from 'react-icons/pi';
 
 
 export default function Header({hide,fixed,redirect,token}) {
@@ -42,12 +42,14 @@ export default function Header({hide,fixed,redirect,token}) {
 			<div className={`w-full mx-auto px-4 py-2 md:py-2 fixed z-50 bg-gradient-to-r from-blue-500/70 to-purple-500/70 drop-shadow-xl top-0 ${hide ? "backdrop-blur-sm md:backdrop-blur-lg":""}`}>
 				<div className={`fixed ${revealAccSettings ? 'xl:right-12 lg:right-5 md:right-3 ' : '-right-[150px]'} transition-all duration-200 ease-in-out rounded-xl hidden md:block
 				top-[80px] bg-gradient-to-r from-blue-500/70 to-purple-500/70 drop-shadow-xl border-gray-400/80 border-[1px] flex flex-col`}>
-					<div className="py-[5px] px-4 cursor-pointer hover:bg-gray-400/40 transition-all duration-100 ease-in text-gray-200 hover:text-sky-400 transition-all duration-100 ease-out">
-						<h1 className="text-md flex gap-[6px] items-center font-mono"><FiSettings className="h-5 w-5"/> Settings</h1>
+					<div 
+					onClick={()=>router.push('/profile')}
+					className="py-[5px] px-4 cursor-pointer transition-all duration-100 ease-in text-gray-200 hover:text-sky-400 transition-all duration-100 ease-out">
+						<h1 className="text-md flex gap-[6px] items-center font-mono"><PiUserCircleFill className="h-5 w-5"/> Profile</h1>
 					</div>
 					<div 
 					onClick={logMeOut}
-					className="py-[5px] px-4 cursor-pointer hover:bg-gray-400/40 transition-all duration-100 ease-in text-gray-200 hover:text-red-400 transition-all duration-100 ease-out">
+					className="py-[5px] px-4 cursor-pointer transition-all duration-100 ease-in text-gray-200 hover:text-red-400 transition-all duration-100 ease-out">
 						<h1 className="text-md flex gap-[6px] items-center font-mono"><BiLogOut className="h-5 w-5"/> Log out</h1>
 					</div>
 				</div>

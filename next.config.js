@@ -1,3 +1,5 @@
+const { withNextVideo } = require('next-video/process')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   future:{
@@ -5,8 +7,8 @@ const nextConfig = {
   },
   webpack(config){
   	config.resolve.fallback = {
-  		...config.resolve.fallback,
-  		fs:false
+        ...config.resolve.fallback,
+        fs:false
   	};
   	return config;
   },

@@ -6,22 +6,26 @@ import {AiOutlineCalendar,AiOutlineFundProjectionScreen} from 'react-icons/ai';
 import {HiOutlineLockClosed} from 'react-icons/hi';
 import {useRouter} from 'next/navigation';
 import {useRecoilState} from 'recoil'
-import {currentWorkshopState} from '../atoms/userAtom';
+import {currentWorkshopState,currentUserState} from '../atoms/userAtom';
 import {MdVideoSettings} from 'react-icons/md';
 import {IoMdTime} from 'react-icons/io';
-import {getAllWorkshops,createWorkshop} from '../utils/ApiRoutes';
+import {getAllWorkshops,createWorkshop,createCourse,getAllCourses} from '../utils/ApiRoutes';
 import Join from './Join.tsx';
 import axios from 'axios';
 import timediff from 'timediff';
 import DateDiff from 'date-diff';
 import {BsChevronDown} from 'react-icons/bs';
+import WorkshopCard from './WorkshopCard';
+import CourseCard from './CourseCard';
 
 export default function Main() {
 	
 	const [workshops,setWorkshops] = useState([]);
 	const router = useRouter();
 	const [currentWorkshop,setCurrentWorkshop] = useRecoilState(currentWorkshopState);
+	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);
 	const [alertWorkshop,setAlertWorkshop] = useState('');
+	const [data2,setData2] = useState([]);
 	const data = [{
 		image:"https://ik.imagekit.io/d3kzbpbila/webdev_Z0TfmeIWE.png?updatedAt=1687367732190",
 		title:'Kickstart Web Dev',
@@ -31,7 +35,8 @@ export default function Main() {
 	}]
 
 	useEffect(()=>{
-		getWorkshops()
+		getWorkshops();
+		getAllCoursesFunc();
 		// createWorkshopFunction()
 		// setTimeout(()=>{
 		// 	document.getElementById('about').scrollIntoView({
@@ -39,7 +44,530 @@ export default function Main() {
 		// 		block:"start",
 		// 	})
 		// },3000)
+		// createCourseFunction();
 	},[])
+
+	const createCourseFunction = async() => {
+		const content = [
+		  {
+		    title: 'Course Introduction',
+		    video:'https://www.googleapis.com/drive/v3/files/1wsItHhlAQl2ONFg-guh1Y5gcm1G2g0rd?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '0:32',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: "Welcome to the course! In this introductory module, you'll get a glimpse of what's in store. We'll outline the course structure, set expectations, and highlight the outcomes you can anticipate upon completion.",
+		  },
+		  {
+		    title: 'Expectations & Outcomes',
+		    video:'https://www.googleapis.com/drive/v3/files/1i15Dy92mNLsaoxP9th0uRr2-IDAyZLNP?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '1:21',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: "Understand the goals of this course and what you'll gain by the end. We'll discuss the skills you'll acquire, the knowledge you'll gain, and how it will benefit you in the realm of web development and networking.",
+		  },
+		  {
+		    title: 'Web Development & Scopes',
+		    video:'https://www.googleapis.com/drive/v3/files/17gqnw7eQVzVffNLmgxUCsRwzXNxv37Eq?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '8:54',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: "Explore the vast landscape of web development careers. Learn about the diverse scopes and job opportunities available in the industry, providing you with insights to shape your career path.",
+		  },
+		  {
+		    title: 'Frontend Backend Architecture',
+		    video:'https://www.googleapis.com/drive/v3/files/1WT7bQvXamHHerZiE3d6wsleL9v8dejKS?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:36',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: 'Delve into the intricacies of frontend and backend architecture. Understand how these components work together to create seamless and responsive web applications, laying the foundation for your development journey.',
+		  },
+		  {
+
+		    title: 'Database',
+		    video:'https://www.googleapis.com/drive/v3/files/1Hojzg_gLdZa3R-w58WDyYwoKtXYpKnoh?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '1:07',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: 'Uncover the importance of databases in web development. Learn what are the types of database available and the free cloud services providing free database for developers.',
+		  },
+		  {
+		    title: 'IP & Types',
+		    video:'https://www.googleapis.com/drive/v3/files/1JPA-gL2oYOsI_dQLgoJF8JuWdG6PeyrA?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '9:35',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: 'Navigate the world of Internet Protocol (IP) addresses. Gain a comprehensive understanding of IP types and their significance in the networking landscape.',
+		  },
+		  {
+		    title: 'IPv4 vs IPv6',
+		    video:'https://www.googleapis.com/drive/v3/files/1WZyxOF4TIhbZRd6xv84V9BFWOfybI-Do?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:12',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: "Compare IPv4 and IPv6, the two versions of the Internet Protocol. Understand the differences and advancements that IPv6 brings to address the limitations of IPv4.",
+		  },
+		  {
+		    title: 'Static vs Dynamic IP',
+		    video:'https://www.googleapis.com/drive/v3/files/1AZ6g0BnJYJP3mNpuN63gS_LL2ttom9J4?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:36',
+		    locked:false,
+		    completed: false,
+		    notes:[],
+		    description: "Explore the distinction between static and dynamic IP addresses. Learn how each type is assigned and its impact on network configurations.",
+		  },
+		  {
+		  	title: 'Quiz',
+		  	quiz:true,
+			locked:false,
+		  	completed:false,
+		  	questions:[
+			  	{
+			  		question:'What does "frontend" refer to in web development?',
+			  		options:[
+			  			'The part of a website users interact with',
+			  			'The server-side logic of a website',
+			  			'The database management system',
+			  			'The network infrastructure'
+			  		],
+			  		questionId:100
+			  	},
+			  	{
+			  		question:'What is the primary role of "backend" in web development?',
+			  		options:[
+			  			'Managing the user interface',
+			  			'Handling server-side logic and databases',
+			  			'Designing responsive layouts',
+			  			'Implementing frontend styles'
+			  		],
+			  		questionId:101
+			  	},
+			  	{
+			  		question:'What does "IP" stand for in networking?',
+			  		options:[
+			  			'Internet Provider',
+			  			'Internet Protocol',
+			  			'Information Processing',
+			  			'Interface Port'
+			  		],
+			  		questionId:102
+			  	},
+			  	{
+			  		question:' What is the total range of each octet in an IPv4 address?',
+			  		options:[
+			  			'0-100',
+			  			'0-127',
+			  			'0-255',
+			  			'0-64'
+			  		],
+			  		questionId:103
+			  	},
+		  	]
+		  },
+		  {
+		    title: 'DNS',
+		    video:'https://www.googleapis.com/drive/v3/files/1sOIp0Omvc37eo8gLBPar6IOMDOwVBx1E?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '10:11',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Dive into the Domain Name System (DNS) and unravel the process of translating domain names to IP addresses. Explore the role DNS plays in making web browsing seamless.",
+		  },
+		  {
+		    title: 'What is API?',
+		    video:'https://www.googleapis.com/drive/v3/files/1LQA16OVuRltbDfMyOLyXOC_71FwT5u4G?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '3:12',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Application Programming Interfaces (APIs). Understand their significance in web development, facilitating communication between different software systems.",
+		  },
+		  {
+		    title: 'What is HTML',
+		    video:'https://www.googleapis.com/drive/v3/files/11ddHwUKFjW3l-miwF_PkHdXhZHFunsou?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '2:11',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Begin your journey into the core of web development with HTML. Learn the basics of structuring web content and creating the foundation for interactive websites.",
+		  },
+		  {
+		    title: 'HTML Page Structure',
+		    video:'https://www.googleapis.com/drive/v3/files/1zMJ_kg46_f__0-r9p99LD-O9itSj6nAH?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '3:33',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Master the art of organizing your web pages. Explore HTML tags that define the structure of a webpage, providing a solid foundation for your coding endeavors.",
+		  },
+		  {
+		  "title": "Quiz",
+		  "quiz": true,
+		  "locked": true,
+		  "completed": false,
+		  "questions": [
+		    {
+		      "question": "What is the primary function of DNS in web development?",
+		      "options": [
+		        "To design responsive user interfaces",
+		        "To translate domain names to IP addresses",
+		        "To manage server-side logic",
+		        "To encrypt website data"
+		      ],
+		      "questionId": 104
+		    },
+		    {
+		      "question": "What is the primary role of 'backend' in web development?",
+		      "options": [
+		        "Managing the user interface",
+		        "Handling server-side logic and databases",
+		        "Designing responsive layouts",
+		        "Implementing frontend styles"
+		      ],
+		      "questionId": 105
+		    },
+		    {
+		      "question": "What does 'IP' stand for in networking?",
+		      "options": [
+		        "Internet Provider",
+		        "Internet Protocol",
+		        "Information Processing",
+		        "Interface Port"
+		      ],
+		      "questionId": 106
+		    },
+		    {
+		      "question": "What is the total range of each octet in an IPv4 address?",
+		      "options": [
+		        "0-100",
+		        "0-127",
+		        "0-255",
+		        "0-64"
+		      ],
+		      "questionId": 107
+		    }
+		  	]
+			},
+		  {
+		    title: 'Text tags',
+		    video:'https://www.googleapis.com/drive/v3/files/1eaerVIo3CjyvbwRaNGZ6li2DD-50OS05?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '18:55',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Explore the world of text manipulation in HTML. Discover tags that enhance the presentation of textual content on your web pages.",
+		  },
+		  {
+		    title: 'List tags',
+		    video:'https://www.googleapis.com/drive/v3/files/1d2nFAzKXF-slB8l0woggjGMLvB9wNCh1?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '5:29',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Explore HTML's list tags to efficiently structure information. Learn how to create ordered and unordered lists for better content organization.",
+		  },
+		  {
+		    title: 'Anchor tag',
+		    video:'https://www.googleapis.com/drive/v3/files/1cB0BT2chGAI8CWblR54WiILG93QL0H5j?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:53',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Unlock the power of hyperlinking with the anchor tag. Understand how to connect different pages and resources within your website.",
+		  },
+		  {
+		    title: 'Image tag',
+		    video:'https://www.googleapis.com/drive/v3/files/1CReuu9fVESvDLmvVv7-jGPNTW-bZibGX?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '6:48',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Bring visual appeal to your web pages with the image tag. Learn how to integrate images seamlessly into your HTML content.",
+		  },
+		  {
+		    title: 'Audio & video tag',
+		    video:'https://www.googleapis.com/drive/v3/files/1xlEVlZm8UxhV7rz2OTXk3Ir0OThxdZYo?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:56',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Elevate user engagement with multimedia elements. Explore the audio and video tags to incorporate media seamlessly into your web projects.",
+		  },
+		  {
+		    title: 'iframe & embed tag',
+		    video:'https://www.googleapis.com/drive/v3/files/1DIVRkQZvAmGKeA9r9K3svRGwC_7rMWsk?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:47',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Harness the capabilities of iframe and embed tags. Understand how these tags enable the integration of external content within your web pages.",
+		  },
+		  {
+		    title: 'Div tag',
+		    video:'https://www.googleapis.com/drive/v3/files/129XZHAw2ql-0jGwLG2E8d7m404dCv11a?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '3:26',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Master the versatile div tag. Learn how it acts as a container, allowing you to structure and style your HTML content effectively.",
+		  },
+		  {
+		    title: 'Input tags',
+		    video:'https://www.googleapis.com/drive/v3/files/1XuBepnGGacfSivsLsknYCKYrIizRoZFF?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '14:01',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Dive into user interaction with HTML input tags. Explore various input types and understand how they enable user data input.",
+		  },
+		  {
+		    title: 'Button tag',
+		    video:'https://www.googleapis.com/drive/v3/files/12ZE_83UGzIS3p2pI-YbskLtfa8w2keTa?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '1:43',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Elevate user experience with interactive buttons. Learn the ins and outs of the button tag and its various applications.",
+		  },
+		  {
+		    title: 'Form part 1',
+		    video:'https://www.googleapis.com/drive/v3/files/1pfvBUm55bovs8tMFRoUe1TEzN3Uvm1sU?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '9:09',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Embark on the journey of web forms. In part one, explore the essential elements that make up a form, setting the stage for user data collection.",
+		  },
+		  {
+		    title: 'Form part 2',
+		    video:'https://www.googleapis.com/drive/v3/files/1ecqJEOVEFePNQUY1Vw9cyev9mPqWa1VB?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '8:00',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Delve deeper into the world of web forms. In part two, learn about form validation, submission methods, and enhance the functionality of your forms.",
+		  },
+		  {
+		    title: 'Table tag',
+		    video:'https://www.googleapis.com/drive/v3/files/1uRAH9Tn1iNbyj-eNe-c7WCqpQEq27AIS?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '4:42',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Uncover the power of HTML tables. Learn how to structure and display data in a tabular format for improved readability.",
+		  },
+		  {
+		    title: 'Semantic HTML - 1',
+		    video:'https://www.googleapis.com/drive/v3/files/11SlSF4yerlY0UKAQEjq1FopXRoasgPM3?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '5:13',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Embrace semantic HTML for enhanced accessibility and SEO. In part one, understand how semantic tags contribute to the meaning and structure of your content.",
+		  },
+		  {
+		    title: 'Semantic HTML - 2',
+		    video:'https://www.googleapis.com/drive/v3/files/1Q1GOSLSvpq-p45RKJWTRmFvO1VoZPPcs?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '2:13',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Continue your journey into semantic HTML. In part two, explore additional tags that enrich the semantics of your web pages.",
+		  },
+		  {
+		    title: 'Web Crawler',
+		    video:'https://www.googleapis.com/drive/v3/files/1kk3NDWlJXsrTpoHBINYCv_H7wFo_gu0L?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '3:40',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Understand how websites are ranked to top by web crawling. Understand the fundamentals of how search engines navigate and index content across the vast web.",
+		  },
+		  {
+			  "title": "Quiz",
+			  "quiz": true,
+			  "locked": true,
+			  "completed": false,
+			  "questions": [
+			    {
+			      "question": "What is the purpose of 'Text tags' in HTML?",
+			      "options": [
+			        "To create lists of items",
+			        "To structure webpage content",
+			        "To manipulate text formatting",
+			        "To embed multimedia elements"
+			      ],
+			      "questionId": 108
+			    },
+			    {
+			      "question": "Which HTML tags are used for creating ordered and unordered lists?",
+			      "options": [
+			        "<ol> and <li>",
+			        "<ul> and <li>",
+			        "<list> and <item>",
+			        "<order> and <item>"
+			      ],
+			      "questionId": 109
+			    },
+			    {
+			      "question": "What does the 'Anchor tag' (<a>) primarily facilitate in HTML?",
+			      "options": [
+			        "Embedding images",
+			        "Creating hyperlinks",
+			        "Styling webpage elements",
+			        "Inserting audio content"
+			      ],
+			      "questionId": 110
+			    },
+			    {
+			      "question": "What does the term 'Web Crawler' refer to in the context of HTML?",
+			      "options": [
+			        "A spider-like creature",
+			        "A tool for organizing files",
+			        "A script for automating tasks",
+			        "A program for navigating and indexing web content"
+			      ],
+			      "questionId": 111
+			    }
+			  ]
+			},
+		  {
+		    title: 'More HTML tags',
+		    video:'https://www.googleapis.com/drive/v3/files/1uHx6RhlIWMIO-oFuD_inJTqEBla7esRM?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '1:39',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Expand your HTML toolkit with additional tags. Discover tags that cater to specific needs, enhancing the richness of your web pages.",
+		  },
+		  {
+		    title: 'Project 1 - 1',
+		    video:'https://www.googleapis.com/drive/v3/files/1KONGhmlzlwXfIXrB-NPE2gNlXuA1neam?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '7:38',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Apply your newfound HTML skills in a practical project. In part one, embark on a hands-on project to where we build a small FAQ page by using semantic HTML tags and using font awesome icons.",
+		  },
+		  {
+		    title: 'Project 1 - 2',
+		    video:'https://www.googleapis.com/drive/v3/files/1r8STo_LGI8wZ4JFJRbluZEDsO8RdI67i?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '8:47',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Continue your project journey in part two. Apply advanced HTML concepts and solidify your skills through a comprehensive project that showcases your abilities.",
+		  },
+		  {
+		    title: 'Project 2',
+		    video:'https://www.googleapis.com/drive/v3/files/18qttOIlkDpRD2k3cGDTPpp5Ld2SDoO-9?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '9:05',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Level up with an in-depth project. Demonstrate your proficiency in HTML as you undertake a larger-scale project, integrating various elements learned throughout the course.",
+		  },
+		  {
+		    title: 'Web Hosting',
+		    video:'https://www.googleapis.com/drive/v3/files/1abdc71ZO4_sACRMNG_J0qGjs8C1R9VS6?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '6:26',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Unravel the mysteries of web hosting. Learn how to take your web projects live by exploring different hosting options and understanding the basics of site configurations.",
+		  },
+		  {
+		    title: 'CSS',
+		    video:'https://www.googleapis.com/drive/v3/files/1VNvQ8qX-llH1dKuKfZJZVDeIPashcBeC?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '8:22',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Transition seamlessly from HTML to CSS. In this module, delve into the world of Cascading Style Sheets to add style and visual appeal to your web pages.",
+		  },
+		  {
+			  "title": "HTML and Project Quiz",
+			  "quiz": true,
+			  "locked": true,
+			  "completed": false,
+			  "questions": [
+			    {
+			      "question": "In 'Project 1 - 1', what HTML semantic tags were primarily used for creating a FAQ page?",
+			      "options": [
+			        "<div> and <span>",
+			        "<details> and <summary>",
+			        "<ul> and <li>",
+			        "<section> and <article>"
+			      ],
+			      "questionId": 112
+			    },
+			    {
+			      "question": "In 'Project 1 - 2', how did you make an image float using HTML?",
+			      "options": [
+			        "Applied 'float' property in CSS",
+			        "Used 'position: absolute'",
+			        "Set 'display: inline-block'",
+			        "Inserted a 'float' tag around the image"
+			      ],
+			      "questionId": 113
+			    },
+			    {
+			      "question": "What was the focus of 'Project 2' in your HTML course?",
+			      "options": [
+			        "Creating an FAQ page",
+			        "Designing a personal portfolio",
+			        "Developing a basic app documentation",
+			        "Implementing a chat application"
+			      ],
+			      "questionId": 114
+			    },
+			    {
+			      "question": "What is web hosting in the context of web development?",
+			      "options": [
+			        "A service that allows individuals and organizations to make their websites accessible via the World Wide Web",
+			        "A method of creating dynamic web pages",
+			        "A technique for optimizing website performance",
+			        "A module covered in the CSS section"
+			      ],
+			      "questionId": 115
+			    }
+			  ]
+			},
+		  {
+		    title: 'Wrap up',
+		    video:'https://www.googleapis.com/drive/v3/files/1OanBpw2vjpEDJl6pZnSh3ETRsLwAmUhn?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    duration: '2:07',
+		    locked:true,
+		    completed: false,
+		    notes:[],
+		    description: "Congratulations on completing the course! In this final module, recap your journey, reflect on your accomplishments, and gain insights into the next steps in your web development adventure.",
+		  },
+		];
+		const title = 'Basics of Networking and HTML Beginner to Advanced Course'
+		const description = 'Learn web development fundamentals, covering frontend, backend, and database structures. Explore client-server dynamics, APIs, various IP types, DNS workings, and HTML essentials with an introduction to CSS for crafting interactive websites';
+		const image = '/html.png';
+		const courseId = '101110'; 
+		const locked = false;
+		const videos = '35'
+		const projects = '2';
+		const duration = '4 Hours';
+		const reqiurements = [
+			'Basic text editor for writing HTML code',
+			'Web Browser to view the output of HTML code'
+		]
+
+		// const {data} = await axios.post(createCourse,{
+		// 	key:'DWjO8xwOjufFQsx7vUI7Mw==',title,content,description,image,
+		// 	courseId,locked,videos,projects,reqiurements,duration
+		// })
+		// console.log(data)
+	}
 
 	const createWorkshopFunction = async() => {
 		let image = "https://ik.imagekit.io/d3kzbpbila/webdev_Z0TfmeIWE.png?updatedAt=1687367732190"
@@ -47,42 +575,64 @@ export default function Main() {
 		let description = 'Gain knowledge about how websites work and the basics of HTML & CSS.'
 		let startsAt = '24-6-23 (Saturday)'
 		let duration = '2 Days'
-		const {data} = await axios.post(createWorkshop,{
-			title,description,image,startsAt,duration
-		})
+		// const {data} = await axios.post(createWorkshop,{
+		// 	title,description,image,startsAt,duration
+		// })
 		// console.log(data);
+	}
+
+	const getAllCoursesFunc = async() => {
+		const {data} = await axios.get(getAllCourses);
+		if(data.status){
+			let tempData = [...data?.course,{
+				image:'./css.png',
+				courseId:201011,
+				title:'Dive into CSS',
+				description:'Basic and Advance level of CSS,',
+				locked:true,
+				videos:'25 Videos',
+				projects:'3 Projects'
+			},{
+				image:'./python.png',
+				courseId:102222,
+				title:'Python Basic and Intermediate',
+				description:'Learn the basics of python using real life examples and get a good understanding how an compiler and interpreter works',
+				locked:true,
+				videos:'20 Videos',
+				projects:'5 Projects'
+			},]
+			setData2(tempData)
+		}
 	}
 
 	const getWorkshops = async() => {
 		const {data} = await axios.get(getAllWorkshops);
 		//console.log(data);
 		setWorkshops(data?.data);
-		setAlertWorkshop(data?.data[1]);
+		const date1 = new Date();
+
+		const temp = data?.data[1]?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
+		temp[0] = '20'+temp[0];
+		const currentdate = new Date(temp?.join('-'))
+		const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
+		var diff = new DateDiff(date2, date1);
+		if(diff?.minutes() < 1 ){
+
+		}else{
+			setAlertWorkshop(data?.data[1]);
+		}
 	}
 
-	const data2 = [{
-		image:'./html.png',
-		title:'Deep HTML',
-		description:'Learn the basic and advance level of HTML and Kickstart your Journey in web development ',
-		locked:true,
-		videos:'10 Videos',
-		projects:'2 Projects'
-	},{
-		image:'./css.png',
-		title:'Dive into CSS',
-		description:'Basic and Advance level of CSS,',
-		locked:true,
-		videos:'25 Videos',
-		projects:'3 Projects'
-	},{
-		image:'./python.png',
-		title:'Python Basic and Intermediate',
-		description:'Learn the basics of python using real life examples and get a good understanding how an compiler and interpreter works',
-		locked:true,
-		videos:'20 Videos',
-		projects:'5 Projects'
-	},
-	];
+	// const data2 = [{
+	// 	image:'./html.png',
+	// 	courseId:101001,
+	// 	title:'Basics of Networking and HTML Beginner to Advanced Course',
+	// 	description:'Learn web development fundamentals, covering frontend, backend, and database structures. Explore client-server dynamics, APIs, various IP types, DNS workings, and HTML essentials with an introduction to CSS for crafting interactive websites',
+	// 	locked:false,
+	// 	videos:'10 Videos',
+	// 	projects:'2 Projects'
+	// },
+	// ];
 	
 
 	return (
@@ -104,15 +654,12 @@ export default function Main() {
 			className="max-w-6xl mx-auto md:py-[100px] py-[60px]  text-center">
 				<h1 className="lg:text-6xl md:text-4xl text-2xl font-semibold text-black">Empower Your Digital Journey</h1>
 				<p className="lg:text-2xl md:text-xl text-lg md:mt-7 mt-5 text-gray-500">Elevate. Innovate. Create.</p>
-				<div className="flex md:flex-row flex-col-reverse gap-5 mt-12">
+				<div className="flex md:flex-row flex-col-reverse items-center gap-5 mt-12">
 					<div className="px-5 md:px-2 text-start mt-6 md:mt-0 w-full md:w-[60%]">
 						<h1 className="text-xl font-semibold text-gray-800">
-							Welcome to TNS academy, your virtual hub for comprehensive web development and programming education. 
-							We offer an immersive learning experience through engaging video tutorials and interactive workshops. 
-							Whether you are a beginner taking your first steps or an experienced developer seeking to level up your skills, 
-							we will guide you in honing your skills to create stunning websites, robust applications, and groundbreaking solutions. Join our thriving community of 
-							learners and unlock your potential in the world of digital innovation. Get started today and embark on 
-							a path to success in the exciting realm of web development and programming.
+							TNS academy is your online destination for learning various technologies. You will enjoy our fun and interactive video lessons, workshops and hands-on projects. No matter if you are a newbie or a pro, we will help you sharpen your skills to build amazing websites, apps, products, and more. Become part of our vibrant community of learners and express your creativity in the digital world. 
+							Don't wait any longer and start your journey to success in the fascinating field of technology. <a href="#courses" className="text-sky-500 hover:underline" >Join our courses to start.</a>
+
 						</h1>
 					</div>
 					<div className="w-full md:w-[40%] px-5">
@@ -129,31 +676,9 @@ export default function Main() {
 				<div className="w-full grid grid-cols-1 mt-7 md:grid-cols-3 gap-5 ">
 					{
 						workshops.map((dat,l)=>(
-							<div key={l}
-							onClick={()=>{
-								setCurrentWorkshop(dat);
-								router.push({
-									pathname:`/workshops`,
-									query:{id:dat._id}
-								})
-							}}
-							className="rounded-xl flex cursor-pointer hover:scale-95 transition-all duration-200 ease-in-out
-							flex-col shadow-xl border-[1px] border-gray-700/40 overflow-hidden pb-3">
-								<img src={dat.image} alt="" className="w-full"/>
-								<div className="px-3 py-2">
-									<h1 className="text-2xl font-semibold text-black">{dat.title}</h1>
-									<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><AiOutlineCalendar className="h-5 w-5"/>{dat.startsAt}</h1>
-									<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><IoMdTime className="h-5 w-5 text-gray-600"/>{dat.duration}</h1>
-									<p className="text-md mt-3 font-semibold text-gray-700">{dat.description}</p>
-									<div className="flex items-center justify-between mt-5">
-										<div className="w-full">
-
-										</div>
-										<button className="text-sky-500 text-lg flex whitespace-nowrap">Join  &gt;&gt;</button>
-									</div>
-								</div>
-							</div>	
-
+							<WorkshopCard dat={dat} l={l} setCurrentWorkshop={setCurrentWorkshop}
+							router={router} 
+							/>
 						))
 					}
 
@@ -167,28 +692,9 @@ export default function Main() {
 				<div className="w-full grid grid-cols-1 mt-8 md:grid-cols-3 gap-5 ">
 					{
 						data2.map((dat,j)=>(
-							<div key={j} className={`relative rounded-xl flex cursor-pointer ${dat.locked ? 'hover:scale-95':'' }  transition-all duration-100 ease-in-out
-							 flex-col shadow-xl border-[1px] border-gray-700/40 overflow-hidden pb-3`}>
-								<div className={`absolute h-full w-full bg-white/80 ${dat.locked ? 'flex' : 'hidden'} items-center justify-center`}>
-									<HiOutlineLockClosed className="h-7 w-7 text-gray-700 "/>
-								</div>
-								<img src={dat.image} alt="" className="w-full aspect-video"/>
-								<div className="px-3 py-2">
-									<h1 className="text-2xl font-semibold text-black">{dat.title}</h1>
-									<div className="flex gap-2">
-										<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><MdVideoSettings className="h-5 w-5"/>{dat.videos}</h1>
-										<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><AiOutlineFundProjectionScreen className="h-5 w-5"/>{dat.projects}</h1>
-									</div>
-									<p className="text-md mt-3 font-semibold text-gray-700">{dat.description}</p>
-									<div className="flex items-center justify-between mt-5">
-										<div className="w-full">
-
-										</div>
-										<button className="text-sky-500 text-lg flex whitespace-nowrap">Enroll  &gt;&gt;</button>
-									</div>
-								</div>
-							</div>	
-
+							<CourseCard dat={dat} j={j} currentUser={currentUser}
+							router={router}
+							/>
 						))
 					}
 

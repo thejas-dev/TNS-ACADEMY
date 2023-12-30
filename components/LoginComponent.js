@@ -182,7 +182,7 @@ export default function LoginComponent({id,session,session2}) {
 			if(confirmed){
 				setCreateAccount(true);
 				setAccountLoading(true);
-				
+				handleValidation();
 			}else{
 				setConfirmed(true)
 				setRevealData(false);
@@ -197,11 +197,11 @@ export default function LoginComponent({id,session,session2}) {
 		}
 	},[])
 
-	useEffect(()=>{
-		if(imgurl.length>2){
-			handleValidation();
-		}
-	},[createAccount])
+	// useEffect(()=>{
+	// 	if(imgurl.length>2){
+	// 		handleValidation();
+	// 	}
+	// },[createAccount])
 
 	useEffect(()=>{
 		if(createAccount){
@@ -210,30 +210,34 @@ export default function LoginComponent({id,session,session2}) {
 	},[imgurl])
 
 	const handleValidation = async() =>{
-	    let email = session2?.user.email || session.user.email
+	    let email = session2?.user?.email || session?.user?.email
 	    setAccountLoading(true);
-	    const {data} = await axios.post(loginRoute,{
-	      email,
-	    });
-	    if(data.status === false){
-	      const name = session2?.user.name || session?.user.name;
-	      const image = imgurl
-	      const level = selectedOption
-	      const {data} = await axios.post(registerRoute,{
-	        email,name,image,level
-	      })
-	      if(!localStorage.getItem('tns-academy')){
-	        localStorage.setItem('tns-academy',JSON.stringify(data?.user.email));
-	      }
-	      setCurrentUser(data?.user);
-	      setAccountLoading(false);
+	    if(email){
+		    const {data} = await axios.post(loginRoute,{
+		      email,
+		    });
+		    if(data.status === false){
+		      const name = session2?.user.name || session?.user.name;
+		      const image = imgurl
+		      const level = selectedOption
+		      const {data} = await axios.post(registerRoute,{
+		        email,name,image,level
+		      })
+		      if(!localStorage.getItem('tns-academy')){
+		        localStorage.setItem('tns-academy',JSON.stringify(data?.user.email));
+		      }
+		      setCurrentUser(data?.user);
+		      setAccountLoading(false);
+		    }else{
+		      if(!localStorage.getItem('tns-academy')){
+		        localStorage.setItem('tns-academy',JSON.stringify(data?.user.email));
+		      }
+		      setCurrentUser(data?.user);
+		      setAccountLoading(false);
+		    }
 	    }else{
-	      if(!localStorage.getItem('tns-academy')){
-	        localStorage.setItem('tns-academy',JSON.stringify(data?.user.email));
-	      }
-	      setCurrentUser(data?.user);
-	      setAccountLoading(false);
-	    }
+		  	setAccountLoading(false);
+		  }
 	  }
 
 	const toastOption={
@@ -252,20 +256,19 @@ export default function LoginComponent({id,session,session2}) {
 
 
 	return (
-		<main className={`w-full relative h-full bg-no-repeat md:bg-center bg-cover bg-center  overflow-hidden bg-[url('https://ik.imagekit.io/d3kzbpbila/login_img_mM5BWvh_v.avif?updatedAt=1687367596612')]`}>
+		<main className={`w-full relative h-full bg-no-repeat md:bg-center bg-cover bg-center overflow-hidden 
+		bg-[url('https://ik.imagekit.io/d3kzbpbila/login_img_mM5BWvh_v.avif?updatedAt=1687367596612')]`}>
 			
 			<div className="absolute h-full w-full bg-gradient-to-r from-purple-950/60 to-black/30 z-0"/>
 			{
 				currentWindow === 'login'?
-				<div className=" w-full h-full md:mt-[180px] mt-[100px] md:px-14 px-5 relative z-10">
+				<div className=" w-full h-full md:mt-[180px] mt-[200px] md:px-14 px-5 relative z-10">
 
 					<h1 className="lg:text-4xl select-none md:text-3xl text-2xl font-varino text-pink-500 text-shadow text-shadow-fire">
 						Slide In
 					</h1>
 					<p className={`mt-7 md:w-[400px] w-[80%] text-md text-gray-300 font-semibold ${infoShown && 'hidden' } `}>
-						By Signing up, you will be automatically subscribed to our weekly newsletters. Explore the latest 
-						trends, insights, and updates in web development, programming and technology from your mail inbox. Manage your email preferences
-						anytime in your account settings.
+						Welcome back to TNS Academy. Login/Signup via Google account.
 					</p>
 					<p className={`mt-7 md:w-[400px] w-[80%] text-md text-gray-300 font-semibold ${!infoShown && 'hidden' } `}>
 						Welcome back to TNS Academy. Login/Signup via Google account.
@@ -291,7 +294,7 @@ export default function LoginComponent({id,session,session2}) {
 				</div>
 				:
 				currentWindow === 'image'?
-				<div className=" w-full h-full mt-[160px] md:px-14 px-5 relative z-10">
+				<div className=" w-full h-full md:mt-[100px] mt-[160px] md:px-14 px-5 relative z-10">
 					<h1 className="lg:text-3xl select-none md:text-2xl text-xl md:ml-0 ml-7 font-varino text-pink-500 text-shadow text-shadow-fire">
 						Profile picture
 					</h1>
@@ -350,7 +353,7 @@ export default function LoginComponent({id,session,session2}) {
 				</div>
 				:
 				<div className={` w-full h-full ${!revealData ? 'md:mt-[90px] mt-[50px]' : 'md:mt-[40px] mt-[20px]' }  md:px-14 px-2 relative z-10 overflow-y-scroll scrollbar-none`}>
-					<h1 className="lg:text-3xl select-none md:text-2xl text-xl md:ml-0 ml-2 font-varino 
+					<h1 className="lg:text-3xl select-none md:text-xl text-lg md:ml-0 ml-2 font-varino 
 					text-pink-500 text-shadow md:block hidden text-shadow-fire">
 						Select one
 					</h1>
@@ -369,7 +372,7 @@ export default function LoginComponent({id,session,session2}) {
 										}
 									</div>
 									<div className="flex flex-col gap-1">
-										<h1 className="select-none md:text-xl text-lg font-semibold text-white">
+										<h1 className="select-none leading-none md:text-md text-sm font-semibold text-white">
 											{dat.title}
 										</h1>
 										<p className="select-none text-sm font-semibold text-gray-400">
@@ -385,7 +388,7 @@ export default function LoginComponent({id,session,session2}) {
 						!currentUser &&
 						<button 
 						onClick={createAccountInData}
-						className="md:mt-[30px] mt-5 rounded-xl border-[1.7px] hover:scale-110 transition-all duration-100 ease-in border-blue-500/40 
+						className="md:mt-[10px] mt-5 rounded-xl border-[1.7px] hover:scale-110 transition-all duration-100 ease-in border-blue-500/40 
 						md:px-14 px-5 py-3 md:bg-black/10 bg-black/30 text-green-400 font-semibold text-lg flex gap-2 items-center">
 							{
 								confirmed ? 

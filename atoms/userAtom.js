@@ -11,4 +11,13 @@ export const currentWorkshopState =  atom({
 	default:""
 })
 
+export const currentPlayingVideoState = atom({
+	key:"currentPlayingVideoState",
+	default:{}
+})
+
+export const currentCourseState = atom({
+	key:"currentCourseState",
+	default:[]
+})
 
