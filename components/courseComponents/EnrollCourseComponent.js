@@ -39,9 +39,15 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 			setCourseName(data?.course?.title);
 			setLoading(false);
 		}else{
-			// router.push('/');
+			router.push('/');
 		}
 	}
+
+	useEffect(()=>{
+		if(id && !currentCourse){
+			fetchCourseFunc();
+		}
+	},[id])
 
 	const enrollThisCourse = async() => {
 		if(!enrolled && currentUser && !currentCourse?.locked) {
@@ -100,11 +106,11 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 		},5000)
 	}
 
-	useEffect(()=>{
-		if(!currentCourse){
-			fetchCourseFunc()
-		}
-	},[])
+	// useEffect(()=>{
+	// 	if(!currentCourse){
+	// 		fetchCourseFunc()
+	// 	}
+	// },[])
 
 	return (
 		<main className="w-full h-full overflow-y-auto bg-white">
