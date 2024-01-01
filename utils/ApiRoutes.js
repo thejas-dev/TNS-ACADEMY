@@ -1,5 +1,5 @@
-export const host = "http://192.168.126.96:3333";
-//https://tns-academy-server.vercel.app
+export const host = "https://tns-academy-server.vercel.app"
+
 export const getAllWorkshops = `${host}/api/auth/getAllWorkshops`;
 export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
