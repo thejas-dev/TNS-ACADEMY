@@ -37,10 +37,10 @@ export default function MainCourseComponent({id,setCourseName}) {
 				setCourseName(userRegisteredCourses[idx]?.title);
 				setCurrentCourse(userRegisteredCourses[idx]);
 			}else{
-				router.push(`/enroll/${id}`)
+				router.push(`/`)
 			}
 		}else{
-			router.push(`/enroll/${id}`)
+			router.push(`/`)
 		}
 	}
 	
