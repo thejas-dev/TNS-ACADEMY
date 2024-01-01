@@ -82,7 +82,7 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 	      if (navigator.share) {
 	        await navigator.share({
 	          title: 'TNS-Academy Courses',
-	          text: 'Check out TNS-Academy course contents!',
+	          text: `Check out TNS-Academy's ${currentCourse?.title}!`,
 	          url: window.location.href,
 	        });
 	      } else {
