@@ -263,7 +263,7 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 
 			<div className="mt-12 lg:max-w-6xl w-full mx-auto lg:px-6 px-4 flex justify-center mb-8 items-center">
 				<a href={currentCourse?.authorInsta}><h1 className="text-gray-700 hover:underline flex gap-1 hover:text-sky-500 transition-all duration-100 ease-in
-				font-semibold text-md">Workshop By {currentCourse?.author} <AiOutlineInstagram className="h-6 hover:text-sky-500 transition-all duration-100 ease-in
+				font-semibold text-md">Author, {currentCourse?.author} <AiOutlineInstagram className="h-6 hover:text-sky-500 transition-all duration-100 ease-in
 				w-6 text-gray-700"/> </h1></a>
 			</div>
 
