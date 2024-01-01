@@ -413,7 +413,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 								<div key={j}
 								onClick={()=>setCurrentTab(tab)}
 								className={`flex-col rounded-md overflow-hidden ${tab === 'Contents' ? 'lg:hidden flex' : 'flex'}
-								hover:bg-gray-700/50 transition-all duration-200 ease-in-out cursor-pointer`} key={j}>
+								hover:bg-gray-700/50 transition-all duration-200 ease-in-out cursor-pointer`}>
 									<h1 className="px-3 py-2 text-gray-100 text-sm">{tab}</h1>
 									
 									<div className={`w-full h-[2px] ${currentTab === tab ? 'bg-purple-500' : 'bg-transparent'} `}/>
