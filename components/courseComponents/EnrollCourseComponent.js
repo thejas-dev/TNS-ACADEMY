@@ -39,7 +39,7 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 			setCourseName(data?.course?.title);
 			setLoading(false);
 		}else{
-			router.push('/');
+			// router.push('/');
 		}
 	}
 
