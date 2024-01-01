@@ -591,7 +591,7 @@ export default function Main() {
 				description:'Basic and Advance level of CSS,',
 				locked:true,
 				videos:'25 Videos',
-				projects:'3 Projects'
+				projects:'3'
 			},{
 				image:'./python.png',
 				courseId:102222,
@@ -599,7 +599,7 @@ export default function Main() {
 				description:'Learn the basics of python using real life examples and get a good understanding how an compiler and interpreter works',
 				locked:true,
 				videos:'20 Videos',
-				projects:'5 Projects'
+				projects:'5'
 			},]
 			setData2(tempData)
 		}
