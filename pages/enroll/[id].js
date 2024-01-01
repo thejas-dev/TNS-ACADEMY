@@ -3,11 +3,19 @@ import { useRouter } from 'next/router'
 import Header2 from '../../components/Header2';
 import EnrollCourseComponent from '../../components/courseComponents/EnrollCourseComponent';
 import Head from 'next/head';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
 export default function Home(){
 	const router = useRouter();
-	const [courseName,setCourseName] = useState('Enroll Course')
+	const [courseName,setCourseName] = useState('Enroll Course');
+
+	useEffect(()=>{
+		const referrer = document.referrer.toLowerCase();
+
+		if (referrer.includes('instagram.com') || referrer.includes('linkedin.com')) {
+		  window.location.href = 'https://tnsacademy-insta.vercel.app';
+		}
+	},[])
 
 	return (
 		<div className="w-full h-screen overflow-y-auto bg-[#180A0A]">

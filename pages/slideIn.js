@@ -3,13 +3,20 @@ import Head from 'next/head';
 
 import LoginComponent from '../components/LoginComponent'
 import {getProviders,getSession,useSession} from 'next-auth/react'
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 export default function SlideIn({providers,session2}) {
 	
 	const {data:session} = useSession()
 
+	useEffect(()=>{
+		const referrer = document.referrer.toLowerCase();
+
+		if (referrer.includes('instagram.com') || referrer.includes('linkedin.com')) {
+		  window.location.href = 'https://tnsacademy-insta.vercel.app';
+		}
+	},[])
 
 	return (
 		
