@@ -342,7 +342,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 				currentPlayingVideo?.quiz ? 
 				''
 				:
-				<div className="w-full p-5 pt-0 pb-2">
+				<div className="w-full md:p-5 p-1 md:pt-0 pt-2 pb-2">
 					<div className="rounded-md relative shadow-white/40 aspect-[16/9] border-1 border-white">
 						<ReactPlayer
 					        url={currentPlayingVideo?.video}
