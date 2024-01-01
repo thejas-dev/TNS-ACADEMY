@@ -354,7 +354,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 					        className="z-0 absolute z-0 top-0 left-0 blur-lg"
 					      />
 						<ReactPlayer
-				        url={currentPlayingVideo.video}
+				        url={currentPlayingVideo?.video}
 				        ref={videoRef}
 				        onPlay={handlePlay}
 				        onPause={handlePause}
