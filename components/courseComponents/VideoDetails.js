@@ -1,7 +1,7 @@
 "use client"
 
 import ReactPlayer from 'react-player'
-import React from 'react'
+import React, {useRef} from 'react'
 import Video from 'next-video'
 import {useEffect,useState} from 'react';
 import {useRecoilState} from 'recoil'
@@ -34,6 +34,8 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	const [thisVideoCompleted,setThisVideoCompleted] = useState(false);
 	const [showCourseCompleted,setShowCourseCompleted] = useState(false);
 	const [showContentsMobile,setShowContentsMobile] = useState(false);
+	const backgroundVideoRef = useRef(null);
+  	const videoRef = useRef(null);
 
 	const tabs = [
 		'Details',
@@ -50,6 +52,33 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 			checkAndSetContent();
 		}
 	},[]);
+
+	const handlePlay = () => {
+	    const video = videoRef.current.getInternalPlayer();
+	    const backgroundVideo = backgroundVideoRef.current.getInternalPlayer();
+
+	    video.play();
+	    backgroundVideo.play();
+
+	    if(!checkingStarted){
+	    	startCheck();
+	    	setCheckingStarted(true);
+	    }
+
+	    const currentTime = video.currentTime;
+	    backgroundVideoRef.current.seekTo(currentTime);
+	  };
+
+	  const handlePause = () => {
+	    const video = videoRef.current.getInternalPlayer();
+	    const backgroundVideo = backgroundVideoRef.current.getInternalPlayer();
+
+	    video.pause();
+	    backgroundVideo.pause();
+
+	    const currentTime = video.currentTime;
+	    backgroundVideoRef.current.seekTo(currentTime);
+	  };
 
 	function calculateCompletionPercentage(courseData) {
 	  if (!courseData || !courseData.content || courseData.content.length === 0) {
@@ -154,6 +183,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	}
 
 	const onVideo80PercentWatched = () => {
+		// console.log("i ran")
 		if(!currentPlayingVideo?.completed){
 			const data = {
 				...currentPlayingVideo,
@@ -180,15 +210,13 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 
 	function checkVideoProgress(e) {
 		if(!thisVideoCompleted){
-		    const currentTime = e.target.currentTime;
-		    const duration = e.target.duration;
-		    const backgroundVideo = document.getElementById('background-video')
-		    if(backgroundVideo){
-		    	backgroundVideo.currentTime = e?.target?.currentTime;
+		    const currentTime = e.playedSeconds;
+		    if(backgroundVideoRef.current){
+		    	backgroundVideoRef.current.seekTo(currentTime)
 		    }
-		    const percentageWatched = (currentTime / duration) * 100;
+		    const percentageWatched = Math.ceil(e.played * 100);
 
-
+		    // console.log(percentageWatched)
 		    if (percentageWatched >= 80) {
 		      setThisVideoCompleted(true);
 		      onVideo80PercentWatched();
@@ -198,7 +226,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 
 	const startCheck = () => {
 		const video = document.getElementById('video');
-		video.addEventListener('timeupdate', checkVideoProgress);
+		// video.addEventListener('timeupdate', checkVideoProgress);
 	}
 
 	const nextVideo = () => {
@@ -316,13 +344,24 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 				:
 				<div className="w-full p-5 pt-0 pb-2">
 					<div className="rounded-md relative shadow-white/40 aspect-[16/9] border-1 border-white">
-						<div className="absolute z-0 top-0 left-0 blue-lg">
-							
-						</div>
 						<ReactPlayer
-				        url="/output.m3u8"
+					        url={currentPlayingVideo?.video}
+					        onError={(error) => console.error('Error loading video:', error)}
+					        id="background-video"
+					        width="100%"
+					        height="100%" muted
+					        ref={backgroundVideoRef}
+					        className="z-0 absolute z-0 top-0 left-0 blur-lg"
+					      />
+						<ReactPlayer
+				        url={currentPlayingVideo.video}
+				        ref={videoRef}
+				        onPlay={handlePlay}
+				        onPause={handlePause}
+				        onProgress={checkVideoProgress}
+				        id="video"
 				        onError={(error) => console.error('Error loading video:', error)}
-				        controls
+				        controls className="relative z-1"
 				        width="100%"
 				        height="100%"
 				      />
@@ -370,8 +409,8 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 					:
 					<div className="w-full flex items-center gap-2">
 						{
-							tabs.map((tab,j)=>(
-								<div 
+							tabs?.map((tab,j)=>(
+								<div key={j}
 								onClick={()=>setCurrentTab(tab)}
 								className={`flex-col rounded-md overflow-hidden ${tab === 'Contents' ? 'lg:hidden flex' : 'flex'}
 								hover:bg-gray-700/50 transition-all duration-200 ease-in-out cursor-pointer`} key={j}>
@@ -420,7 +459,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 						<div className="flex flex-col px-2 py-3 gap-4 border-t-[1px] border-gray-600 mt-4 py-4">
 						{
 							currentCourse?.content?.map((course,j)=>(
-								<div 
+								<div key={j}
 								onClick={()=>{
 									if(!course.locked){
 										setCurrentPlayingVideo(course);
@@ -539,7 +578,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 									if(!course.locked){
 										setCurrentPlayingVideo(course);
 									}
-								}}
+								}} key={j}
 								className={`w-full px-2 py-3 flex border-[1.3px] border-gray-300 
 								${currentPlayingVideo?.title === course?.title ? 'bg-gray-700/70' : 'hover:bg-gray-700/70'}
 								${course?.locked ? '' : 'cursor-pointer'} 

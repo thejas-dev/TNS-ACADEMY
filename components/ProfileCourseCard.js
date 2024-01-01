@@ -20,7 +20,7 @@ export default function ProfileCourseCard({course,j}) {
 	useEffect(()=>{
 		if(course){
 			const percentage = calculateCompletionPercentage(course);
-			setPercentage(percentage)
+			setPercentage(Math.ceil(percentage))
 			
 		}
 	},[course])

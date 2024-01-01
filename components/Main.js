@@ -51,7 +51,7 @@ export default function Main() {
 		const content = [
 		  {
 		    title: 'Course Introduction',
-		    video:'https://www.googleapis.com/drive/v3/files/1wsItHhlAQl2ONFg-guh1Y5gcm1G2g0rd?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/intro.m3u8',
 		    duration: '0:32',
 		    locked:false,
 		    completed: false,
@@ -60,7 +60,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Expectations & Outcomes',
-		    video:'https://www.googleapis.com/drive/v3/files/1i15Dy92mNLsaoxP9th0uRr2-IDAyZLNP?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/CourseOutcomes&Scope.m3u8',
 		    duration: '1:21',
 		    locked:false,
 		    completed: false,
@@ -69,7 +69,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Web Development & Scopes',
-		    video:'https://www.googleapis.com/drive/v3/files/17gqnw7eQVzVffNLmgxUCsRwzXNxv37Eq?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/WebDevelopment&Scopes.m3u8',
 		    duration: '8:54',
 		    locked:false,
 		    completed: false,
@@ -78,7 +78,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Frontend Backend Architecture',
-		    video:'https://www.googleapis.com/drive/v3/files/1WT7bQvXamHHerZiE3d6wsleL9v8dejKS?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/FrontendBackendArchitecture.m3u8',
 		    duration: '7:36',
 		    locked:false,
 		    completed: false,
@@ -88,7 +88,7 @@ export default function Main() {
 		  {
 
 		    title: 'Database',
-		    video:'https://www.googleapis.com/drive/v3/files/1Hojzg_gLdZa3R-w58WDyYwoKtXYpKnoh?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/database.m3u8',
 		    duration: '1:07',
 		    locked:false,
 		    completed: false,
@@ -97,7 +97,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'IP & Types',
-		    video:'https://www.googleapis.com/drive/v3/files/1JPA-gL2oYOsI_dQLgoJF8JuWdG6PeyrA?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/ip internal & external.m3u8',
 		    duration: '9:35',
 		    locked:false,
 		    completed: false,
@@ -106,7 +106,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'IPv4 vs IPv6',
-		    video:'https://www.googleapis.com/drive/v3/files/1WZyxOF4TIhbZRd6xv84V9BFWOfybI-Do?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/ipv4 vs ipv6.m3u8',
 		    duration: '7:12',
 		    locked:false,
 		    completed: false,
@@ -115,7 +115,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Static vs Dynamic IP',
-		    video:'https://www.googleapis.com/drive/v3/files/1AZ6g0BnJYJP3mNpuN63gS_LL2ttom9J4?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/static_vs_dynamic_ip.m3u8',
 		    duration: '7:36',
 		    locked:false,
 		    completed: false,
@@ -172,7 +172,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'DNS',
-		    video:'https://www.googleapis.com/drive/v3/files/1sOIp0Omvc37eo8gLBPar6IOMDOwVBx1E?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/dns.m3u8',
 		    duration: '10:11',
 		    locked:true,
 		    completed: false,
@@ -181,7 +181,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'What is API?',
-		    video:'https://www.googleapis.com/drive/v3/files/1LQA16OVuRltbDfMyOLyXOC_71FwT5u4G?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/api.m3u8',
 		    duration: '3:12',
 		    locked:true,
 		    completed: false,
@@ -190,7 +190,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'What is HTML',
-		    video:'https://www.googleapis.com/drive/v3/files/11ddHwUKFjW3l-miwF_PkHdXhZHFunsou?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/what_is_html.m3u8',
 		    duration: '2:11',
 		    locked:true,
 		    completed: false,
@@ -199,7 +199,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'HTML Page Structure',
-		    video:'https://www.googleapis.com/drive/v3/files/1zMJ_kg46_f__0-r9p99LD-O9itSj6nAH?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/HTML_page_structure.m3u8',
 		    duration: '3:33',
 		    locked:true,
 		    completed: false,
@@ -223,32 +223,32 @@ export default function Main() {
 		      "questionId": 104
 		    },
 		    {
-		      "question": "What is the primary role of 'backend' in web development?",
+		      "question": "What does 'API' stand for in web development?",
 		      "options": [
-		        "Managing the user interface",
-		        "Handling server-side logic and databases",
-		        "Designing responsive layouts",
-		        "Implementing frontend styles"
+		        "Advanced Programming Interface",
+		        "Application Programming Interface",
+		        "Automated Processing Interface",
+		        "Advanced Protocol Integration"
 		      ],
 		      "questionId": 105
 		    },
 		    {
-		      "question": "What does 'IP' stand for in networking?",
+		      "question": "What is the main markup language used for creating web pages??",
 		      "options": [
-		        "Internet Provider",
-		        "Internet Protocol",
-		        "Information Processing",
-		        "Interface Port"
+		        "XML",
+		        "XAMPP",
+		        "HTML",
+		        "CSS"
 		      ],
 		      "questionId": 106
 		    },
 		    {
-		      "question": "What is the total range of each octet in an IPv4 address?",
+		      "question": "What does 'HTML' stand for?",
 		      "options": [
-		        "0-100",
-		        "0-127",
-		        "0-255",
-		        "0-64"
+		        "Hyper Transfer Markup Language",
+		        "High-Level Text Management Language",
+		        "Hyperlink and Text Management Language",
+		        "HyperText Markup Language",
 		      ],
 		      "questionId": 107
 		    }
@@ -256,7 +256,7 @@ export default function Main() {
 			},
 		  {
 		    title: 'Text tags',
-		    video:'https://www.googleapis.com/drive/v3/files/1eaerVIo3CjyvbwRaNGZ6li2DD-50OS05?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/text_tags.m3u8',
 		    duration: '18:55',
 		    locked:true,
 		    completed: false,
@@ -265,7 +265,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'List tags',
-		    video:'https://www.googleapis.com/drive/v3/files/1d2nFAzKXF-slB8l0woggjGMLvB9wNCh1?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/list_tags.m3u8',
 		    duration: '5:29',
 		    locked:true,
 		    completed: false,
@@ -274,7 +274,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Anchor tag',
-		    video:'https://www.googleapis.com/drive/v3/files/1cB0BT2chGAI8CWblR54WiILG93QL0H5j?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/Anchor_tag.m3u8',
 		    duration: '7:53',
 		    locked:true,
 		    completed: false,
@@ -283,7 +283,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Image tag',
-		    video:'https://www.googleapis.com/drive/v3/files/1CReuu9fVESvDLmvVv7-jGPNTW-bZibGX?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/image_tag.m3u8',
 		    duration: '6:48',
 		    locked:true,
 		    completed: false,
@@ -292,7 +292,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Audio & video tag',
-		    video:'https://www.googleapis.com/drive/v3/files/1xlEVlZm8UxhV7rz2OTXk3Ir0OThxdZYo?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/audio_and_video_tag.m3u8',
 		    duration: '7:56',
 		    locked:true,
 		    completed: false,
@@ -301,7 +301,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'iframe & embed tag',
-		    video:'https://www.googleapis.com/drive/v3/files/1DIVRkQZvAmGKeA9r9K3svRGwC_7rMWsk?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/iframe_and_embed_tag.m3u8',
 		    duration: '7:47',
 		    locked:true,
 		    completed: false,
@@ -310,7 +310,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Div tag',
-		    video:'https://www.googleapis.com/drive/v3/files/129XZHAw2ql-0jGwLG2E8d7m404dCv11a?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/div_tag.m3u8',
 		    duration: '3:26',
 		    locked:true,
 		    completed: false,
@@ -319,7 +319,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Input tags',
-		    video:'https://www.googleapis.com/drive/v3/files/1XuBepnGGacfSivsLsknYCKYrIizRoZFF?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/input_tag.m3u8',
 		    duration: '14:01',
 		    locked:true,
 		    completed: false,
@@ -328,7 +328,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Button tag',
-		    video:'https://www.googleapis.com/drive/v3/files/12ZE_83UGzIS3p2pI-YbskLtfa8w2keTa?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/button_tag.m3u8',
 		    duration: '1:43',
 		    locked:true,
 		    completed: false,
@@ -337,7 +337,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Form part 1',
-		    video:'https://www.googleapis.com/drive/v3/files/1pfvBUm55bovs8tMFRoUe1TEzN3Uvm1sU?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/form_tag_1.m3u8',
 		    duration: '9:09',
 		    locked:true,
 		    completed: false,
@@ -346,7 +346,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Form part 2',
-		    video:'https://www.googleapis.com/drive/v3/files/1ecqJEOVEFePNQUY1Vw9cyev9mPqWa1VB?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/form_tag_2.m3u8',
 		    duration: '8:00',
 		    locked:true,
 		    completed: false,
@@ -355,7 +355,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Table tag',
-		    video:'https://www.googleapis.com/drive/v3/files/1uRAH9Tn1iNbyj-eNe-c7WCqpQEq27AIS?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/table_tag.m3u8',
 		    duration: '4:42',
 		    locked:true,
 		    completed: false,
@@ -364,7 +364,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Semantic HTML - 1',
-		    video:'https://www.googleapis.com/drive/v3/files/11SlSF4yerlY0UKAQEjq1FopXRoasgPM3?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/semantic_html_1.m3u8',
 		    duration: '5:13',
 		    locked:true,
 		    completed: false,
@@ -373,7 +373,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Semantic HTML - 2',
-		    video:'https://www.googleapis.com/drive/v3/files/1Q1GOSLSvpq-p45RKJWTRmFvO1VoZPPcs?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/semantic_html_2.m3u8',
 		    duration: '2:13',
 		    locked:true,
 		    completed: false,
@@ -382,7 +382,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Web Crawler',
-		    video:'https://www.googleapis.com/drive/v3/files/1kk3NDWlJXsrTpoHBINYCv_H7wFo_gu0L?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/web_crawler.m3u8',
 		    duration: '3:40',
 		    locked:true,
 		    completed: false,
@@ -408,7 +408,7 @@ export default function Main() {
 			    {
 			      "question": "Which HTML tags are used for creating ordered and unordered lists?",
 			      "options": [
-			        "<ol> and <li>",
+			        "<ol> and <ul>",
 			        "<ul> and <li>",
 			        "<list> and <item>",
 			        "<order> and <item>"
@@ -439,7 +439,7 @@ export default function Main() {
 			},
 		  {
 		    title: 'More HTML tags',
-		    video:'https://www.googleapis.com/drive/v3/files/1uHx6RhlIWMIO-oFuD_inJTqEBla7esRM?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/more_html_tags.m3u8',
 		    duration: '1:39',
 		    locked:true,
 		    completed: false,
@@ -448,7 +448,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Project 1 - 1',
-		    video:'https://www.googleapis.com/drive/v3/files/1KONGhmlzlwXfIXrB-NPE2gNlXuA1neam?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/project_1_1.m3u8',
 		    duration: '7:38',
 		    locked:true,
 		    completed: false,
@@ -457,7 +457,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Project 1 - 2',
-		    video:'https://www.googleapis.com/drive/v3/files/1r8STo_LGI8wZ4JFJRbluZEDsO8RdI67i?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/project_1_2.m3u8',
 		    duration: '8:47',
 		    locked:true,
 		    completed: false,
@@ -466,7 +466,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Project 2',
-		    video:'https://www.googleapis.com/drive/v3/files/18qttOIlkDpRD2k3cGDTPpp5Ld2SDoO-9?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/project_2.m3u8',
 		    duration: '9:05',
 		    locked:true,
 		    completed: false,
@@ -475,7 +475,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'Web Hosting',
-		    video:'https://www.googleapis.com/drive/v3/files/1abdc71ZO4_sACRMNG_J0qGjs8C1R9VS6?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/web_hosting.m3u8',
 		    duration: '6:26',
 		    locked:true,
 		    completed: false,
@@ -484,7 +484,7 @@ export default function Main() {
 		  },
 		  {
 		    title: 'CSS',
-		    video:'https://www.googleapis.com/drive/v3/files/1VNvQ8qX-llH1dKuKfZJZVDeIPashcBeC?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/intro_to_css.m3u8',
 		    duration: '8:22',
 		    locked:true,
 		    completed: false,
@@ -541,7 +541,7 @@ export default function Main() {
 			},
 		  {
 		    title: 'Wrap up',
-		    video:'https://www.googleapis.com/drive/v3/files/1OanBpw2vjpEDJl6pZnSh3ETRsLwAmUhn?key=AIzaSyApxtFMWB69MgUjs1DXoEcwLFKyjrQVS8E&alt=media',
+		    video:'/htmlcourse/wrap_up.m3u8',
 		    duration: '2:07',
 		    locked:true,
 		    completed: false,
@@ -558,7 +558,7 @@ export default function Main() {
 		const projects = '2';
 		const duration = '4 Hours';
 		const reqiurements = [
-			'Basic text editor for writing HTML code',
+			'Text editor for writing HTML code',
 			'Web Browser to view the output of HTML code'
 		]
 
@@ -677,7 +677,7 @@ export default function Main() {
 					{
 						workshops.map((dat,l)=>(
 							<WorkshopCard dat={dat} l={l} setCurrentWorkshop={setCurrentWorkshop}
-							router={router} 
+							router={router} key={l}
 							/>
 						))
 					}
@@ -693,7 +693,7 @@ export default function Main() {
 					{
 						data2.map((dat,j)=>(
 							<CourseCard dat={dat} j={j} currentUser={currentUser}
-							router={router}
+							router={router} key={j}
 							/>
 						))
 					}

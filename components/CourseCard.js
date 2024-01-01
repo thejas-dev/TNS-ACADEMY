@@ -31,7 +31,7 @@ export default function CourseCard({dat,j,currentUser,router}) {
 					}
 					return false
 				})
-				const percentage = calculateCompletionPercentage(currentUser?.enrolledCoursesData[idx]);
+				const percentage = Math.ceil(calculateCompletionPercentage(currentUser?.enrolledCoursesData[idx]));
 				setPercentage(percentage)
 			}else{
 				setEnrolled(false)
@@ -49,7 +49,7 @@ export default function CourseCard({dat,j,currentUser,router}) {
 				}
 				return false
 			})
-			const percentage = calculateCompletionPercentage(currentUser?.enrolledCoursesData[idx]);
+			const percentage = Math.ceil(calculateCompletionPercentage(currentUser?.enrolledCoursesData[idx]));
 			setPercentage(percentage)
 		}else{
 			setEnrolled(false)
