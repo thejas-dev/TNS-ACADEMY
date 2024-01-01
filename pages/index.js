@@ -8,6 +8,7 @@ import {useRecoilState} from 'recoil'
 import {currentUserState} from '../atoms/userAtom';
 import Head from 'next/head';
 import React from 'react';
+import {useRouter} from 'next/navigation'
 
 
 export default function Home({session2}) {
@@ -26,6 +27,11 @@ export default function Home({session2}) {
 				handleLogin(localStorage.getItem('tns-academy'));
 			}
 		}	
+		const referrer = document.referrer.toLowerCase();
+
+		if (referrer.includes('instagram.com') || referrer.includes('linkedin.com')) {
+		  window.location.href = 'https://tnsacademy-insta.vercel.app';
+		}
 	},[])
 
 	useEffect(()=>{
