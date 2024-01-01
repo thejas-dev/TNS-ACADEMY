@@ -76,8 +76,8 @@ export default function CourseCard({dat,j,currentUser,router}) {
 			<div className="px-3 py-2">
 				<h1 className="text-2xl font-semibold text-black">{dat?.title}</h1>
 				<div className="flex gap-2">
-					<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><MdVideoSettings className="h-5 w-5"/>{dat.videos}</h1>
-					<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><AiOutlineFundProjectionScreen className="h-5 w-5"/>{dat.projects}</h1>
+					<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><MdVideoSettings className="h-5 w-5"/>{dat?.videos}</h1>
+					<h1 className="text-md items-center flex gap-2 text-gray-600 mt-2 font-semibold"><AiOutlineFundProjectionScreen className="h-5 w-5"/>{dat?.projects} projects</h1>
 				</div>
 				<p className="text-sm mt-3 font-semibold text-gray-700">{dat?.description}</p>
 				{
