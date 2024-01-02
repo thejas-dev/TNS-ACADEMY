@@ -141,14 +141,17 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	function unlockContent(courseData) {
 	  const firstQuizIndex = courseData.content.findIndex(item => item.quiz === true);
 
-	  const secondQuizIndex = courseData.content.findIndex((item, index) => index > firstQuizIndex && item.quiz === true);
-
+	  let secondQuizIndex = courseData.content.findIndex((item, index) => index > firstQuizIndex && item.quiz === true && item.locked === true);
+	  if(secondQuizIndex < 0) {
+	  	secondQuizIndex = courseData?.content?.length;
+	  }
 	  const updatedContent = courseData.content.map((item, index) => {
 	    if (index >= firstQuizIndex && index <= secondQuizIndex) {
 	      return { ...item, locked: false };
 	    }
 	    return item;
 	  });
+	  console.log(updatedContent,firstQuizIndex,secondQuizIndex)
 
 	  const updatedCourseData = { ...courseData, content: updatedContent };
 	  updatedCourseDataToUserData(updatedCourseData);
@@ -270,8 +273,8 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 		setQuizVerifyLoading(true);
 		const {data} = await axios.post(verifyQuizRoute,{quiz:currentPlayingVideo});
 		if(data?.status){
-			if(data?.everythingCorrect){
-				completetedTheQuiz()
+			if(data?.quiz?.everythingCorrect){
+				completetedTheQuiz();
 			}
 			setCurrentPlayingVideo(data?.quiz);
 			setQuizVerifyLoading(false);
