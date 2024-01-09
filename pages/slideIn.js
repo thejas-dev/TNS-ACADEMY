@@ -32,7 +32,7 @@ export default function SlideIn({providers,session2}) {
 								Don't wait any longer and start your journey to success in the fascinating field of technology." key="ogdesc" />
 		  	</Head>
 
-			<LoginComponent id={providers.google.id} session={session} session2={session2}/>
+			<LoginComponent id={providers?.google?.id} session={session} session2={session2}/>
 		</main>
 		
 
