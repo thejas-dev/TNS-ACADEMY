@@ -243,8 +243,10 @@ export default function WorkshopComponent() {
 							</div>
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex md:items-center gap-2">
-									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Meeting link will be shared to Mail inbox and 
-									<span className="text-blue-500 hover:underline"><a href="https://chat.whatsapp.com/EbYs8s2Me0gKgaYxfykVZT">Whatsapp group</a></span>
+									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>
+									<span>Meeting link will be shared to Mail inbox and <span className="text-blue-500 hover:underline">
+									<a href="https://chat.whatsapp.com/EbYs8s2Me0gKgaYxfykVZT">Whatsapp group</a>
+									</span></span>
 								</p>
 							</div>
 							<div className="flex items-center gap-2">
