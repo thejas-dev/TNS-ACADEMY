@@ -1,4 +1,5 @@
 export const host = "https://tns-academy-server.vercel.app"
+// "http://localhost:3333" 
 
 export const getAllWorkshops = `${host}/api/auth/getAllWorkshops`;
 export const registerRoute = `${host}/api/auth/register`;

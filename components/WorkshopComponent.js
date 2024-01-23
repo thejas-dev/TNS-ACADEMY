@@ -212,7 +212,7 @@ export default function WorkshopComponent() {
 							<p className="text-gray-600 text-md font-semibold flex items-center gap-1"><MdOutlineLanguage className="h-5 w-5 text-gray-600"/> {currentWorkshop?.language}</p>
 						</div>
 						{
-							currentWorkshop?.registeredParticipants?.length>30 &&
+							currentWorkshop?.registeredParticipants?.length>20 &&
 							<div className="flex items-center gap-1 w-full">
 								<h1 className="text-lg text-gray-600 flex w-full items-center gap-2">
 									<div className="flex items-center">
@@ -234,7 +234,7 @@ export default function WorkshopComponent() {
 								<p className="text-gray-600 text-md font-semibold flex items-center gap-2">
 									<SiGooglemeet className="h-5 w-4 text-gray-600"/>  
 									{
-										joined ? 
+										joined && (4>5)  ? 
 										<a href={currentWorkshop?.meetingLink}>{currentWorkshop?.meetingLink}</a>
 										:
 										'Workshop will be conduted on Google Meet'
@@ -243,7 +243,8 @@ export default function WorkshopComponent() {
 							</div>
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex md:items-center gap-2">
-									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Meeting link will be shared to Mail inbox and Whatsapp group
+									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Meeting link will be shared to Mail inbox and 
+									<span className="text-blue-500 hover:underline"><a href="https://chat.whatsapp.com/EbYs8s2Me0gKgaYxfykVZT">Whatsapp group</a></span>
 								</p>
 							</div>
 							<div className="flex items-center gap-2">

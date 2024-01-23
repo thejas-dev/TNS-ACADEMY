@@ -608,10 +608,10 @@ export default function Main() {
 	const getWorkshops = async() => {
 		const {data} = await axios.get(getAllWorkshops);
 		//console.log(data);
-		setWorkshops(data?.data);
+		setWorkshops(data?.data?.reverse());
 		const date1 = new Date();
 
-		const temp = data?.data[1]?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
+		const temp = data?.data[0]?.startsAt?.split('(')[0]?.split(' ')[0]?.split('-')?.reverse();
 		temp[0] = '20'+temp[0];
 		const currentdate = new Date(temp?.join('-'))
 		const date2 = new Date(currentdate?.getTime() + 15 * 60 * 60 * 1000);
@@ -619,7 +619,7 @@ export default function Main() {
 		if(diff?.minutes() < 1 ){
 
 		}else{
-			setAlertWorkshop(data?.data[1]);
+			setAlertWorkshop(data?.data[0]);
 		}
 	}
 
@@ -633,7 +633,6 @@ export default function Main() {
 	// 	projects:'2 Projects'
 	// },
 	// ];
-	
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between scroll-smooth">
@@ -657,7 +656,7 @@ export default function Main() {
 				<div className="flex md:flex-row flex-col-reverse items-center gap-5 mt-12">
 					<div className="px-5 md:px-2 text-start mt-6 md:mt-0 w-full md:w-[60%]">
 						<h1 className="text-xl font-semibold text-gray-800">
-							TNS academy is your online destination for learning various technologies. You will enjoy our fun and interactive video lessons, workshops and hands-on projects. No matter if you are a newbie or a pro, we will help you sharpen your skills to build amazing websites, apps, products, and more. Become part of our vibrant community of learners and express your creativity in the digital world. 
+							21st Skills is your online destination for learning various technologies. You will enjoy our fun and interactive video lessons, workshops and hands-on projects. No matter if you are a newbie or a pro, we will help you sharpen your skills to build amazing websites, apps, products, and more. Become part of our vibrant community of learners and express your creativity in the digital world. 
 							Don't wait any longer and start your journey to success in the fascinating field of technology. <a href="#courses" className="text-sky-500 hover:underline" >Join our courses to start.</a>
 
 						</h1>

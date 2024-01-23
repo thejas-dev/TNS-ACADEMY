@@ -69,7 +69,7 @@ export default function HeaderForCourse({hide,fixed,redirect,token}) {
 							router.push('/')
 						}}
 						className="cursor-pointer md:text-3xl text-xl text-gray-200
-						font-varino tracking-[2px] select-none">TNS-ACADEMY</p>
+						font-varino tracking-[2px] select-none">21 Skills</p>
 					</motion.div>
 					<motion.div 
 					initial={{

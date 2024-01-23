@@ -19,7 +19,7 @@ export default function Join() {
 	const [sent,setSent] = useState(false);
   	const onSubmit: SubmitHandler<Inputs> = formData => {
   		if(!sent){
-	  		window.location.href = `mailto:xai360queries@gmail.com?subject=${formData.subject}&body=Hi my name is ${formData.name}, ${formData.message} (${formData.email})`;
+	  		window.location.href = `mailto:21stskills.com@gmail.com?subject=${formData.subject}&body=Hi my name is ${formData.name}, ${formData.message} (${formData.email})`;
   		}
 	  	formData.name = ""
 	  	formData.message=''
@@ -116,7 +116,7 @@ export default function Join() {
 				</div>
 				<div className="flex items-center space-x-5 justify-center" >
 					<EnvelopeIcon className="text-yellow-400 h-7 w-7 animate-pulse" />
-					<p className="text-2xl text-gray-800/70" >tnsacademy@gmail.com</p>
+					<p className="text-2xl text-gray-800/70" >21stskills.com@gmail.com</p>
 				</div>
 				<form onSubmit={handleSubmit(onSubmit)}
 				className="flex flex-col space-y-2 w-full mx-auto">
