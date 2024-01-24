@@ -258,11 +258,11 @@ export default function WorkshopComponent() {
 										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/><a href={certificate} className="text-sky-500" target="blank" download="true">Download certificate</a>
 										</>
 										:
-										<div  className='flex items-center gap-2'>
+										<div  className='flex items-center gap-[6px]'>
 										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
 										</div>
 										:
-										<div className='flex items-center gap-2'>
+										<div className='flex items-center gap-[6px]'>
 										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided			
 										</div>
 									}
