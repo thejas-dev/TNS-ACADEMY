@@ -30,7 +30,7 @@ export default function Home({session2}) {
 		const referrer = document.referrer.toLowerCase();
 
 		if (referrer.includes('instagram.com') || referrer.includes('linkedin.com')) {
-		  window.location.href = 'https://tnsacademy-insta.vercel.app';
+		 // window.location.href = 'https://tnsacademy-insta.vercel.app';
 		}
 	},[])
 

@@ -192,7 +192,7 @@ export default function WorkshopComponent() {
 				<div className="flex gap-5 md:flex-row flex-col w-full">
 					<div className=" flex flex-col gap-2">
 						<div className="flex xl:gap-14 lg:gap-10 md:gap-7 gap-5 items-center">
-							<h1 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl text-gray-900 font-semibold">{currentWorkshop?.title} Workshop</h1>
+							<h1 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl text-gray-900 font-semibold">{currentWorkshop?.title}</h1>
 							<button 
 							onClick={joinThisWorkshop}
 							className={`rounded-xl lg:px-14 px-7 lg:py-2 py-[5px] ${joined ? 'bg-gray-100 text-black' : 'bg-gradient-to-r from-black/70 to-black text-white'} md:text-xl text-lg font-semibold 
@@ -243,8 +243,10 @@ export default function WorkshopComponent() {
 							</div>
 							<div className="flex items-center gap-2">
 								<p className="text-gray-600 text-md flex md:items-center gap-2">
-									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Meeting link will be shared to Mail inbox and 
-									<span className="text-blue-500 hover:underline"><a href="https://chat.whatsapp.com/EbYs8s2Me0gKgaYxfykVZT">Whatsapp group</a></span>
+									<BsFillShareFill className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>
+									<span>Meeting link will be shared to Mail inbox and <span className="text-blue-500 hover:underline">
+									<a href="https://chat.whatsapp.com/EbYs8s2Me0gKgaYxfykVZT">Whatsapp group</a>
+									</span></span>
 								</p>
 							</div>
 							<div className="flex items-center gap-2">
@@ -256,13 +258,13 @@ export default function WorkshopComponent() {
 										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/><a href={certificate} className="text-sky-500" target="blank" download="true">Download certificate</a>
 										</>
 										:
-										<>
+										<div  className='flex items-center gap-[6px]'>
 										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided
-										</>
+										</div>
 										:
-										<>
+										<div className='flex items-center gap-[6px]'>
 										<TbCertificate className="h-5 w-5 md:mt-0 mt-2 text-gray-600"/>Certificates will be provided			
-										</>
+										</div>
 									}
 								</p>
 							</div>
