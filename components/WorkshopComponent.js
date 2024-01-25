@@ -279,8 +279,10 @@ export default function WorkshopComponent() {
 							{
 								currentWorkshop?.datesAndTimings?.map((dat,i)=>(
 									<tbody key={i} className={`border-y-[1px] ${i%2 === 0 && 'bg-black/10' } border-gray-400/40 cursor-pointer hover:bg-sky-200/30 transition-all duration-100 ease-in-out`}>
-										<td className="px-7 py-2" >{dat?.split('(')[0]}</td>
-										<td className="px-7 py-2" >{dat?.split('(')[1]?.split(')')[0]?.split(':')[1]}</td>
+										<tr>
+											<td className="px-7 py-2" >{dat?.split('(')[0]}</td>
+											<td className="px-7 py-2" >{dat?.split('(')[1]?.split(')')[0]?.split(':')[1]}</td>
+										</tr>
 									</tbody>
 								))
 							}
@@ -293,7 +295,7 @@ export default function WorkshopComponent() {
 				{
 					currentWorkshop?.learn?.map((ln,j)=>(
 						<div key={j} className={`w-full text-start ${j>0 ? 'mt-7' : 'mt-10'} `}>
-							<h1 className="lg:text-2xl text-xl font-semibold text-black	">Day {j+1} ({ln.date}) :-</h1>
+							<h1 className="lg:text-2xl text-xl font-semibold text-black	">Day {j+1} ({ln?.date}) :-</h1>
 							<p className="text-gray-600 text-md font-semibold flex mt-2 mb-2
 							items-center gap-1"><IoMdTime className="h-5 w-5 text-gray-600"/> {ln?.time}</p>
 							{
