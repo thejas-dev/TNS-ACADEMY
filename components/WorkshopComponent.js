@@ -234,8 +234,8 @@ export default function WorkshopComponent() {
 								<p className="text-gray-600 text-md font-semibold flex items-center gap-2">
 									<SiGooglemeet className="h-5 w-4 text-gray-600"/>  
 									{
-										joined && (4>5)  ? 
-										<a href={currentWorkshop?.meetingLink}>{currentWorkshop?.meetingLink}</a>
+										joined ? 
+										<a href={currentWorkshop?.meetingLink} className="text-blue-500" target="_blank" >{currentWorkshop?.meetingLink}</a>
 										:
 										'Workshop will be conduted on Google Meet'
 									}
