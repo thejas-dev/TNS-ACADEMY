@@ -23,7 +23,7 @@ export default function Sidebar({router,currentUser,revealMenu,setRevealMenu,log
 		<div className="fixed h-screen scroll-smooth z-30 w-full backdrop-blur-lg bg-black/90">
 			<motion.div className=" flex h-full mt-12 flex-col gap-4 items-center p-3 overflow-y-scroll scrollbar-none">
 				<div className="rounded-full px-5 py-3 mb-7 flex items-center justify-center bg-gray-500/30">
-					<p className="md:text-3xl text-2xl text-yellow-400 font-varino tracking-[2px] select-none">TNS-ACADEMY</p>	
+					<p className="md:text-3xl text-2xl text-yellow-400 font-varino tracking-[2px] select-none">21st Skills</p>	
 				</div>
 				<p 
 				onClick={()=>{

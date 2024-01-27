@@ -154,7 +154,7 @@ export default function WorkshopComponent() {
 								remainingTime === 'Closed' ? 
 								'0'
 								:
-								remainingTime?.days
+								remainingTime.weeks > 0 ? '7' : remainingTime?.days
 							}</h1>
 							<p className="text-gray-100 text-md">Days</p>
 						</div>
