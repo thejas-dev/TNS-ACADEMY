@@ -212,7 +212,7 @@ export default function WorkshopComponent() {
 							<p className="text-gray-600 text-md font-semibold flex items-center gap-1"><MdOutlineLanguage className="h-5 w-5 text-gray-600"/> {currentWorkshop?.language}</p>
 						</div>
 						{
-							currentWorkshop?.registeredParticipants?.length>20 &&
+							currentWorkshop?.registeredParticipants?.length>40 &&
 							<div className="flex items-center gap-1 w-full">
 								<h1 className="text-lg text-gray-600 flex w-full items-center gap-2">
 									<div className="flex items-center">
