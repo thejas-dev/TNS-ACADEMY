@@ -27,11 +27,7 @@ export default function Home({session2}) {
 				handleLogin(localStorage.getItem('tns-academy'));
 			}
 		}	
-		const referrer = document.referrer.toLowerCase();
-
-		if (referrer.includes('instagram.com') || referrer.includes('linkedin.com')) {
-		 // window.location.href = 'https://tnsacademy-insta.vercel.app';
-		}
+		
 	},[])
 
 	useEffect(()=>{
@@ -70,7 +66,7 @@ export default function Home({session2}) {
   	<Head>
   		<title>21st Skills</title>
   		<link rel="icon" href="/favicon.ico" sizes="any" />
-  		<meta property="og:url" content="https://21stskills.vercel.app" key="ogurl" />
+  		<meta property="og:url" content="https://21stskills.com" key="ogurl" />
 			<meta property="og:image" content="https://ik.imagekit.io/d3kzbpbila/thejashari_2s7bX4H_h" key="ogimage" />
 			<meta property="og:site_name" content="21st Skills" key="ogsitename" />
 			<meta property="og:title" content="21st Skills" key="ogtitle" />

@@ -11,7 +11,7 @@ export default function LinkComponent() {
 
 
 	 const copyLink = () => {
-	    const link = 'https://21stskills.vercel.app';
+	    const link = 'https://21stskills.com';
 
 	    // Create a temporary input element to copy the link to the clipboard
 	    const tempInput = document.createElement('input');
@@ -37,7 +37,7 @@ export default function LinkComponent() {
           	<br/><br/>
           	To fully access all capabilities, we suggest opening this platform in a browser, ensuring optimal session management.
           </h1>
-          <h1 onClick={copyLink} className="text-pink-500 text-xl cursor-pointer font-semibold">https://21stskills.vercel.app</h1>
+          <h1 onClick={copyLink} className="text-pink-500 text-xl cursor-pointer font-semibold">https://21stskills.com</h1>
           <p className="text-gray-300 px-5 text-center">
           Copy the link above and open it in a browser like <span className="text-pink-500 font-semibold">Google Chrome</span> or any other browser of your choice.
         </p>

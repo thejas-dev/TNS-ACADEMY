@@ -4,18 +4,20 @@ import Head from 'next/head';
 import LoginComponent from '../components/LoginComponent'
 import {getProviders,getSession,useSession} from 'next-auth/react'
 import React, {useEffect} from 'react';
+import {useRouter} from 'next/navigation';
 
 
 export default function SlideIn({providers,session2}) {
 	
-	const {data:session} = useSession()
+	const {data:session} = useSession();
+	const router = useRouter();
 
 	useEffect(()=>{
 		const referrer = document.referrer.toLowerCase();
 
-		if (referrer.includes('instagram.com') || referrer.includes('linkedin.com')) {
-		  window.location.href = 'https://tnsacademy-insta.vercel.app';
-		}
+		if(userAgent.includes('instagram') || userAgent.includes('linkedin.com')){
+	      router.push('/notallowed')
+	    }
 	},[])
 
 	return (
