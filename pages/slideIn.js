@@ -13,7 +13,7 @@ export default function SlideIn({providers,session2}) {
 	const router = useRouter();
 
 	useEffect(()=>{
-		const referrer = document.referrer.toLowerCase();
+    	const userAgent = window.navigator.userAgent.toLowerCase();
 
 		if(userAgent.includes('instagram') || userAgent.includes('linkedin.com')){
 	      router.push('/notallowed')

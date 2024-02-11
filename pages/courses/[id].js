@@ -10,7 +10,7 @@ export default function Home(){
 	const [courseName,setCourseName] = useState('TNS-Academy');
 
 	useEffect(()=>{
-		const referrer = document.referrer.toLowerCase();
+	    const userAgent = window.navigator.userAgent.toLowerCase();
 
 		if(userAgent.includes('instagram') || userAgent.includes('linkedin.com')){
 	      router.push('/notallowed')

@@ -10,7 +10,8 @@ export default function Home(){
 	const [courseName,setCourseName] = useState('Enroll Course');
 
 	useEffect(()=>{
-		const referrer = document.referrer.toLowerCase();
+		const userAgent = window.navigator.userAgent.toLowerCase();
+
 
 		if(userAgent.includes('instagram') || userAgent.includes('linkedin.com')){
 	      router.push('/notallowed')
