@@ -712,7 +712,7 @@ export default function Main() {
 					className="cursor-pointer absolute right-2 z-10 -top-9 bg-red-500 px-3 rounded-t-xl">
 						<BsChevronDown className="text-white h-7 w-7"/>
 					</div>
-					<h1 className="text-white md:text-xl font-semibold text-md">Workshop Alert : {alertWorkshop?.title} <span className='animate-pulse'>({alertWorkshop?.startsAt?.split('(')[0]})</span> </h1>
+					<h1 className="text-white md:text-xl font-semibold text-md">Workshop Alert : {alertWorkshop?.title} <span className='animate-pulse'>({alertWorkshop?.startsAt?.split('(')[0].split(' ')[0]})</span> </h1>
 					<button onClick={()=>{
 						setCurrentWorkshop(alertWorkshop);
 						router.push('/workshops')
