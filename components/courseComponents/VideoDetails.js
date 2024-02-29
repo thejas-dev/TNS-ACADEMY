@@ -400,41 +400,44 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 					</div>
 				</div>	
 			}
+			{
+				currentPlayingVideo?.quality_video &&
+				<div className={`w-full md:px-6 px-3 flex items-center gap-5 mb-2 ${currentPlayingVideo?.quiz && 'hidden'} `}>
+					<div onClick={()=>{
+						setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+						setQuality('1440')
+					}} 
+					className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+					ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '1440' ? 'border-purple-500' : 'border-gray-800'}`}>
+						1440
+					</div>
+					<div onClick={()=>{
+						setQuality('1080')
+						setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+					}}
+					className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+					ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '1080' ? 'border-purple-500' : 'border-gray-800'}`}>
+						1080
+					</div>
+					<div onClick={()=>{
+						setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+						setQuality('720')
+					}}
+					className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+					ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '720' ? 'border-purple-500' : 'border-gray-800'}`}>
+						720
+					</div>
+					<div onClick={()=>{
+						setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+						setQuality('480')
+					}}
+					className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+					ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '480' ? 'border-purple-500' : 'border-gray-800'}`}>
+						480
+					</div>
+				</div>
+			}
 
-			<div className={`w-full md:px-6 px-3 flex items-center gap-5 mb-2 ${currentPlayingVideo?.quiz && 'hidden'} `}>
-				<div onClick={()=>{
-					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
-					setQuality('1440')
-				}} 
-				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
-				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '1440' ? 'border-purple-500' : 'border-gray-800'}`}>
-					1440
-				</div>
-				<div onClick={()=>{
-					setQuality('1080')
-					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
-				}}
-				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
-				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '1080' ? 'border-purple-500' : 'border-gray-800'}`}>
-					1080
-				</div>
-				<div onClick={()=>{
-					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
-					setQuality('720')
-				}}
-				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
-				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '720' ? 'border-purple-500' : 'border-gray-800'}`}>
-					720
-				</div>
-				<div onClick={()=>{
-					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
-					setQuality('480')
-				}}
-				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
-				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '480' ? 'border-purple-500' : 'border-gray-800'}`}>
-					480
-				</div>
-			</div>
 
 			<div className="w-full flex flex-col gap-3 mt-2 md:px-6 px-3">
 				<h1 className="text-xl font-semibold text-white">{currentPlayingVideo?.title}</h1>
