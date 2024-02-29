@@ -34,6 +34,8 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	const [thisVideoCompleted,setThisVideoCompleted] = useState(false);
 	const [showCourseCompleted,setShowCourseCompleted] = useState(false);
 	const [showContentsMobile,setShowContentsMobile] = useState(false);
+	const [quality,setQuality] = useState('1440');
+	const [seekTime,setSeekTime] = useState('');
 	const backgroundVideoRef = useRef(null);
   	const videoRef = useRef(null);
 
@@ -114,6 +116,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
   		const unlockedContent = currentCourse?.content?.find(item => !item.completed);
 		setCurrentPlayingVideo(unlockedContent);
 	}
+	console.log(currentPlayingVideo)
 
 	const updatedCourseDataToUserData = async(courseData) =>{
 		let userCourses = [...currentUser?.enrolledCoursesData];
@@ -284,11 +287,35 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	}
 
 	useEffect(()=>{
+		if(navigator){
+			if(navigator.connection.effectiveType === '4g'){
+				setQuality('1080')
+			}else if(navigator.connection.effectiveType === '5g'){
+				setQuality('1440')
+			}else{
+				setQuality('720')
+			}
+		}
+	},[])
+
+	useEffect(()=>{
 		if(currentPlayingVideo){
 			setCheckingStarted(false);
 			setThisVideoCompleted(false);
 		}
 	},[currentPlayingVideo])
+
+	useEffect(()=>{
+		if(quality && videoRef?.current?.getInternalPlayer()){
+			videoRef.current.seekTo(seekTime);
+			backgroundVideoRef.current.seekTo(seekTime);
+			const video = videoRef.current.getInternalPlayer()
+			video.addEventListener('loadedmetadata',()=>{
+				videoRef.current.getInternalPlayer().play();
+				// console.log("play")
+			})
+		}
+	},[quality])
 
 	return (
 		<main className="lg:w-[65%] w-full flex z-10 flex-col py-5 overflow-y-auto h-full scrollbar-none">
@@ -348,7 +375,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 				<div className="w-full md:p-5 p-2 md:pt-0 pt-2 pb-2">
 					<div className="rounded-md relative shadow-white/40 aspect-[16/9] border-1 border-white">
 						<ReactPlayer
-					        url={currentPlayingVideo?.video}
+				        	url={currentPlayingVideo?.video ? currentPlayingVideo?.video : quality === '1080' ? `/${currentPlayingVideo?.quality_video['1080']}` : quality === '720' ? `/${currentPlayingVideo?.quality_video['720']}` : quality === '480' ? `/${currentPlayingVideo?.quality_video['480']}` : currentPlayingVideo?.quality_video ? `/${currentPlayingVideo?.quality_video['1440']}` : '' }
 					        onError={(error) => console.error('Error loading video:', error)}
 					        id="background-video"
 					        width="100%"
@@ -357,7 +384,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 					        className="z-0 absolute z-0 top-0 left-0 blur-lg"
 					      />
 						<ReactPlayer
-				        url={currentPlayingVideo?.video}
+				        url={currentPlayingVideo?.video ? currentPlayingVideo?.video : quality === '1080' ? `/${currentPlayingVideo?.quality_video['1080']}` : quality === '720' ? `/${currentPlayingVideo?.quality_video['720']}` : quality === '480' ? `/${currentPlayingVideo?.quality_video['480']}` : currentPlayingVideo?.quality_video ? `/${currentPlayingVideo?.quality_video['1440']}` : '' }
 				        ref={videoRef}
 				        onPlay={handlePlay}
 				        onPause={handlePause}
@@ -373,6 +400,41 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 					</div>
 				</div>	
 			}
+
+			<div className={`w-full md:px-6 px-3 flex items-center gap-5 mb-2 ${currentPlayingVideo?.quiz && 'hidden'} `}>
+				<div onClick={()=>{
+					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+					setQuality('1440')
+				}} 
+				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '1440' ? 'border-purple-500' : 'border-gray-800'}`}>
+					1440
+				</div>
+				<div onClick={()=>{
+					setQuality('1080')
+					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+				}}
+				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '1080' ? 'border-purple-500' : 'border-gray-800'}`}>
+					1080
+				</div>
+				<div onClick={()=>{
+					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+					setQuality('720')
+				}}
+				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '720' ? 'border-purple-500' : 'border-gray-800'}`}>
+					720
+				</div>
+				<div onClick={()=>{
+					setSeekTime(videoRef.current.getInternalPlayer().currentTime)
+					setQuality('480')
+				}}
+				className={`px-3 font-normal text-md text-white pt-1 pb-1 hover:bg-gray-800/70 transition-all duration-200 
+				ease-in-out rounded-lg cursor-pointer border-b-[3px] ${quality === '480' ? 'border-purple-500' : 'border-gray-800'}`}>
+					480
+				</div>
+			</div>
 
 			<div className="w-full flex flex-col gap-3 mt-2 md:px-6 px-3">
 				<h1 className="text-xl font-semibold text-white">{currentPlayingVideo?.title}</h1>

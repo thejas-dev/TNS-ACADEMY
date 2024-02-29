@@ -250,7 +250,7 @@ export default function LoginComponent({id,session,session2}) {
 
 	useEffect(()=>{
 		if(currentUser){
-			router.push('/');
+			router.back();
 		}
 	},[currentUser])
 

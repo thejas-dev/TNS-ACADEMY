@@ -158,9 +158,9 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 			</div>
 			<div className="mt-[30px] max-w-6xl w-full mx-auto lg:px-6 px-4 flex">
 				<div className="flex gap-5 md:flex-row flex-col w-full">
-					<div className=" flex flex-col gap-2">
-						<div className="flex xl:gap-14 lg:gap-10 md:gap-7 gap-5 items-center">
-							<h1 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl text-gray-900 font-semibold">{currentCourse?.title} course</h1>
+					<div className=" flex flex-col gap-2 w-full	">
+						<div className="flex xl:gap-14 lg:gap-10 md:gap-7 gap-5 w-full justify-between items-center">
+							<h1 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl text-gray-900 font-semibold">{currentCourse?.title}</h1>
 							<button 
 							onClick={enrollThisCourse}
 							className={`rounded-xl lg:px-14 px-7 lg:py-2 py-[5px] hover:scale-110 bg-gradient-to-r from-black/70 
@@ -230,11 +230,10 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 					currentCourse?.content?.map((ln,j)=>(
 						<motion.div 
 						initial={{
-							x:-100,
 							opacity:0.5
 						}}
 						whileInView={{
-							x:0,
+							
 							opacity:1
 						}}
 						transition={{

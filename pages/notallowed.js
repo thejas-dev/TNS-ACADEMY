@@ -42,16 +42,16 @@ export default function LinkComponent() {
           Copy the link above and open it in a browser like <span className="text-pink-500 font-semibold">Google Chrome</span> or any other browser of your choice.
         </p>
           <button 
-			onClick={copyLink}
-			className="bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-white 
-			font-semibold text-2xl py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline">
-			{
-				copied ? 
-				'Copied'
-				:
-				'Copy'
-			}
-			</button>
+					onClick={copyLink}
+					className="bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 text-white 
+					font-semibold text-2xl py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline">
+					{
+						copied ? 
+						'Copied'
+						:
+						'Copy'
+					}
+					</button>
 
         </div>
     </div> 

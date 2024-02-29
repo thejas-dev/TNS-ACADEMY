@@ -72,7 +72,7 @@ export default function CourseCard({dat,j,currentUser,router}) {
 			<div className={`absolute h-full w-full bg-white/80 ${dat.locked ? 'flex' : 'hidden'} items-center justify-center`}>
 				<HiOutlineLockClosed className="h-7 w-7 text-gray-700 "/>
 			</div>
-			<img src={dat.image} alt="" className="w-full aspect-video"/>
+			<img src={dat.image} alt="" className="w-full aspect-video	"/>
 			<div className="px-3 py-2">
 				<h1 className="text-2xl font-semibold text-black">{dat?.title}</h1>
 				<div className="flex gap-2">
