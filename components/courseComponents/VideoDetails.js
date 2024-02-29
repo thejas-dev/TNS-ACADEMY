@@ -37,6 +37,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	const [quality,setQuality] = useState('1440');
 	const [seekTime,setSeekTime] = useState('');
 	const backgroundVideoRef = useRef(null);
+	const [contentSet,setContentSet] = useState(false);
   	const videoRef = useRef(null);
 
 	const tabs = [
@@ -50,10 +51,11 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	},[])
 
 	useEffect(()=>{
-		if(currentPlayingVideo !== {} && currentCourse){
+		if(currentCourse && !contentSet){
 			checkAndSetContent();
+			setContentSet(true)
 		}
-	},[]);
+	},[currentCourse]);
 
 	const handlePlay = () => {
 	    const video = videoRef.current.getInternalPlayer();
@@ -113,10 +115,11 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	}
 
 	const checkAndSetContent = () => {
+		// console.log("RAN",currentCourse)
   		const unlockedContent = currentCourse?.content?.find(item => !item.completed);
 		setCurrentPlayingVideo(unlockedContent);
 	}
-	console.log(currentPlayingVideo)
+	// console.log(currentCourse)
 
 	const updatedCourseDataToUserData = async(courseData) =>{
 		let userCourses = [...currentUser?.enrolledCoursesData];
@@ -154,7 +157,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	    }
 	    return item;
 	  });
-	  console.log(updatedContent,firstQuizIndex,secondQuizIndex)
+	  // console.log(updatedContent,firstQuizIndex,secondQuizIndex)
 
 	  const updatedCourseData = { ...courseData, content: updatedContent };
 	  updatedCourseDataToUserData(updatedCourseData);

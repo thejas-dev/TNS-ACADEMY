@@ -46,7 +46,8 @@ export default function MainCourseComponent({id,setCourseName}) {
 	
 	useEffect(()=>{
 		if(id){
-			fetchCourseContents()
+			setCurrentCourse([]);
+			fetchCourseContents();
 		}
 	},[id])
 
