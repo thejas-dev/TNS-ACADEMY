@@ -12,11 +12,13 @@ import ImageKit from "imagekit";
 import {loginRoute,registerRoute} from '../utils/ApiRoutes';
 import axios from 'axios';
 import {signIn} from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 
 export default function LoginComponent({id,session,session2}) {
 	// body...
 	const [currentWindow,setCurrentWindow] = useState('login')
 	const router = useRouter();
+	const searchParams = useSearchParams()
 	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);
 	const [showImageOption,setShowImageOption] = useState(true);
 	const [loading,setLoading] = useState(false);
@@ -114,7 +116,6 @@ export default function LoginComponent({id,session,session2}) {
 		}
 	}
 
-	// console.log(path,url)
 
 	const upload = () =>{
 		if(url.length > 2){
@@ -250,7 +251,11 @@ export default function LoginComponent({id,session,session2}) {
 
 	useEffect(()=>{
 		if(currentUser){
-			router.back();
+			if(searchParams.get('cameFrom')){
+				router.push(`/${searchParams.get('cameFrom')}`)
+			}else{
+				router.push('/');
+			}
 		}
 	},[currentUser])
 

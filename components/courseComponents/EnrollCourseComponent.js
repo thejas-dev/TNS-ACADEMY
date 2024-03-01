@@ -79,7 +79,7 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 		}else if(currentUser && enrolled){
 			router.push(`/courses/${currentCourse?.courseId}`);
 		}else {
-			router.push('/slideIn')
+			router.push(`/slideIn?cameFrom=enroll/${currentCourse?.courseId}`)
 		}
 	}
 
