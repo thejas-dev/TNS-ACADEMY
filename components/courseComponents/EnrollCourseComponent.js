@@ -200,12 +200,7 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 							<div className="flex items-center">
 								<p className="text-gray-600 text-md font-semibold flex items-center gap-2">
 									<MdOutlineVideoLibrary className="h-5 w-5 text-gray-600"/>  
-									{
-										enrolled ? 
-										<a href={currentCourse?.meetingLink}>{currentCourse?.meetingLink}</a>
-										:
-										'The course contents will be available on our platform.'
-									}
+									The course contents will be available on our platform.
 								</p>
 							</div>
 							<div className="flex items-center gap-2">
