@@ -3,11 +3,48 @@ import { useRouter } from 'next/router'
 import Header2 from '../../components/Header2';
 import EnrollCourseComponent from '../../components/courseComponents/EnrollCourseComponent';
 import Head from 'next/head';
+import {loginRoute} from '../../utils/ApiRoutes';
+import {useRecoilState} from 'recoil'
+import {currentUserState} from '../../atoms/userAtom';
+import axios from 'axios';
 import {useState,useEffect} from 'react';
+import {getProviders,getSession,useSession} from 'next-auth/react'
 
 export default function Home(){
 	const router = useRouter();
 	const [courseName,setCourseName] = useState('Enroll Course');
+	const [currentUser,setCurrentUser] = useRecoilState(currentUserState);
+	const {data:session} = useSession();
+
+
+	useEffect(()=>{
+		if(!currentUser){
+			if(session){
+				handleLogin();
+				// console.log("having session")
+			}else if(localStorage.getItem('tns-academy')){
+				// console.log("having storage")
+				handleLogin(localStorage.getItem('tns-academy'));
+			}
+		}	
+	},[session])
+
+	const handleLogin = async(email) => {
+		if(!email){
+			email = session?.user?.email
+		}	   
+	    const {data} = await axios.post(loginRoute,{
+	      email
+	    });
+	    if(data.status === false){
+
+	    }else{
+	    	if(!localStorage.getItem('tns-academy')){
+     	        localStorage.setItem('tns-academy',JSON.stringify(data?.user.email));
+	        }
+	        setCurrentUser(data?.user);
+	    }
+	}
 
 	useEffect(()=>{
 		const userAgent = window.navigator.userAgent.toLowerCase();

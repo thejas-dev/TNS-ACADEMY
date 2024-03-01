@@ -44,10 +44,10 @@ export default function EnrollCourseComponent({id,setCourseName}) {
 	}
 
 	useEffect(()=>{
-		if(id && !currentCourse){
+		if(id){
 			fetchCourseFunc();
 		}
-	},[id])
+	},[id,currentUser])
 
 	const enrollThisCourse = async() => {
 		if(!enrolled && currentUser && !currentCourse?.locked) {
