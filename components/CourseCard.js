@@ -55,7 +55,7 @@ export default function CourseCard({dat,j,currentUser,router}) {
 		}else{
 			setEnrolled(false)
 		}
-	},[])
+	},[currentUser])
 
 	return (
 		<div key={j} 

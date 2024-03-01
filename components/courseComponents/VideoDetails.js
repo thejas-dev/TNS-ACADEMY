@@ -291,9 +291,9 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 
 	useEffect(()=>{
 		if(navigator){
-			if(navigator.connection.effectiveType === '4g'){
+			if(navigator?.connection?.effectiveType === '4g'){
 				setQuality('1080')
-			}else if(navigator.connection.effectiveType === '5g'){
+			}else if(navigator?.connection?.effectiveType === '5g'){
 				setQuality('1440')
 			}else{
 				setQuality('720')
