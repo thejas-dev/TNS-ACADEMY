@@ -55,7 +55,7 @@ export default function Header({hide,fixed,redirect,token}) {
 				</div>
 
 				<motion.div 
-				className="max-w-6xl flex w-full items-center gap-5 justify-between mx-auto">
+				className="w-full md:px-[40px] px-[8px] flex w-full items-center gap-5 justify-between mx-auto">
 					<motion.div
 					initial={{
 						opacity:0
