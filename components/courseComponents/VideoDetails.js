@@ -59,10 +59,10 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 
 	const handlePlay = () => {
 	    const video = videoRef.current.getInternalPlayer();
-	    const backgroundVideo = backgroundVideoRef.current.getInternalPlayer();
+	    // const backgroundVideo = backgroundVideoRef.current.getInternalPlayer();
 
 	    video.play();
-	    backgroundVideo.play();
+	    // backgroundVideo.play();
 
 	    if(!checkingStarted){
 	    	startCheck();
@@ -70,18 +70,18 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	    }
 
 	    const currentTime = video.currentTime;
-	    backgroundVideoRef.current.seekTo(currentTime);
+	    // backgroundVideoRef.current.seekTo(currentTime);
 	  };
 
 	  const handlePause = () => {
 	    const video = videoRef.current.getInternalPlayer();
-	    const backgroundVideo = backgroundVideoRef.current.getInternalPlayer();
+	    // const backgroundVideo = backgroundVideoRef.current.getInternalPlayer();
 
 	    video.pause();
-	    backgroundVideo.pause();
+	    // backgroundVideo.pause();
 
 	    const currentTime = video.currentTime;
-	    backgroundVideoRef.current.seekTo(currentTime);
+	    // backgroundVideoRef.current.seekTo(currentTime);
 	  };
 
 	function calculateCompletionPercentage(courseData) {
@@ -220,9 +220,9 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	function checkVideoProgress(e) {
 		if(!thisVideoCompleted){
 		    const currentTime = e.playedSeconds;
-		    if(backgroundVideoRef.current){
-		    	backgroundVideoRef.current.seekTo(currentTime)
-		    }
+		    // if(backgroundVideoRef.current){
+		    // 	backgroundVideoRef.current.seekTo(currentTime)
+		    // }
 		    const percentageWatched = Math.ceil(e.played * 100);
 
 		    // console.log(percentageWatched)
@@ -311,7 +311,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 	useEffect(()=>{
 		if(quality && videoRef?.current?.getInternalPlayer()){
 			videoRef.current.seekTo(seekTime);
-			backgroundVideoRef.current.seekTo(seekTime);
+			// backgroundVideoRef.current.seekTo(seekTime);
 			const video = videoRef.current.getInternalPlayer()
 			video.addEventListener('loadedmetadata',()=>{
 				videoRef.current.getInternalPlayer().play();
@@ -377,7 +377,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 				:
 				<div className="w-full md:p-5 p-2 md:pt-0 pt-2 pb-2">
 					<div className="rounded-md relative shadow-white/40 aspect-[16/9] border-1 border-white">
-						<ReactPlayer
+						{/* <ReactPlayer
 				        	url={currentPlayingVideo?.video ? currentPlayingVideo?.video : quality === '1080' ? `/${currentPlayingVideo?.quality_video['1080']}` : quality === '720' ? `/${currentPlayingVideo?.quality_video['720']}` : quality === '480' ? `/${currentPlayingVideo?.quality_video['480']}` : currentPlayingVideo?.quality_video ? `/${currentPlayingVideo?.quality_video['1440']}` : '' }
 					        onError={(error) => console.error('Error loading video:', error)}
 					        id="background-video"
@@ -385,7 +385,7 @@ export default function VideoDetails({currentCourse,setCurrentCourse,openSideBar
 					        height="100%" muted
 					        ref={backgroundVideoRef}
 					        className="z-0 absolute z-0 top-0 left-0 blur-lg"
-					      />
+					      /> */}
 						<ReactPlayer
 				        url={currentPlayingVideo?.video ? currentPlayingVideo?.video : quality === '1080' ? `/${currentPlayingVideo?.quality_video['1080']}` : quality === '720' ? `/${currentPlayingVideo?.quality_video['720']}` : quality === '480' ? `/${currentPlayingVideo?.quality_video['480']}` : currentPlayingVideo?.quality_video ? `/${currentPlayingVideo?.quality_video['1440']}` : '' }
 				        ref={videoRef}
