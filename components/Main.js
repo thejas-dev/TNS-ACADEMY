@@ -84,7 +84,7 @@ export default function Main() {
 		const {data} = await axios.get(getAllCourses);
 		if(data.status){
 			let tempData = [...data?.course,{
-				image:'./python.png',
+				image:'https://ik.imagekit.io/d3kzbpbila/python_vL9wnJgdah.jpg?updatedAt=1709396246168',
 				courseId:102222,
 				title:'Python Basic and Intermediate',
 				description:'Learn the basics of python using real life examples and get a good understanding how an compiler and interpreter works',
