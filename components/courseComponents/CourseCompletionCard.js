@@ -24,7 +24,7 @@ const CourseCompletionCard = ({setShowCourseCompleted,showCourseCompleted}) => {
       <p className="text-sm">
         Thank you for your dedication. Your certificate will be sent to your email within 24 hours.
         You can also download it from this platform. Please provide your feedback through this feedback form. 
-        <a href="https://forms.gle/nNTwJpCLdSAjy9586" target="_blank" className="text-sky-500 hover:underline cursor-pointer" > https://forms.gle/nNTwJpCLdSAjy9586</a>
+        <a href="https://forms.gle/iCs55U5wkfYTtuMk8" target="_blank" className="text-sky-500 hover:underline cursor-pointer" > https://forms.gle/nNTwJpCLdSAjy9586</a>
       </p>
     </div>
   );
